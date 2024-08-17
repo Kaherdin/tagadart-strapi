@@ -27,13 +27,13 @@
     "link": {
       "type": "string"
     },
-    "PageIntro": {
+    "pageIntro": {
       "displayName": "Page Intro",
       "type": "component",
       "repeatable": false,
       "component": "section.page-intro"
     },
-    "Testimonials": {
+    "testimonials": {
       "displayName": "Testimonials",
       "type": "component",
       "repeatable": true,
@@ -47,6 +47,16 @@
       "relation": "manyToMany",
       "target": "api::tag.tag",
       "inversedBy": "projects"
+    },
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

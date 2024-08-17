@@ -837,14 +837,15 @@ export interface ApiProjectProject extends Schema.CollectionType {
     service: Attribute.String;
     expertise: Attribute.RichText;
     link: Attribute.String;
-    PageIntro: Attribute.Component<'section.page-intro'>;
-    Testimonials: Attribute.Component<'section.testimonials', true>;
+    pageIntro: Attribute.Component<'section.page-intro'>;
+    testimonials: Attribute.Component<'section.testimonials', true>;
     content: Attribute.RichText;
     tags: Attribute.Relation<
       'api::project.project',
       'manyToMany',
       'api::tag.tag'
     >;
+    logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
