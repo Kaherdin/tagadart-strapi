@@ -11,6 +11,11 @@ export interface SectionTestimonials extends Schema.Component {
     content: Attribute.RichText;
     avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     name: Attribute.String;
+    testimonials: Attribute.Relation<
+      'section.testimonials',
+      'oneToMany',
+      'api::testimonial.testimonial'
+    >;
   };
 }
 
