@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_section_culture_sections",
+  "info": {
+    "displayName": "CultureSection",
+    "icon": "cube"
+  },
+  "options": {},
+  "attributes": {
+    "pageIntro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.page-intro"
+    },
+    "values": {
+      "displayName": "Text Zone",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.text-zone"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "classIcon": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

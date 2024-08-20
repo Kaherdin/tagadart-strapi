@@ -103,6 +103,21 @@ export interface SectionPageIntro extends Schema.Component {
   };
 }
 
+export interface SectionCultureSection extends Schema.Component {
+  collectionName: 'components_section_culture_sections';
+  info: {
+    displayName: 'CultureSection';
+    icon: 'cube';
+  };
+  attributes: {
+    pageIntro: Attribute.Component<'section.page-intro'>;
+    values: Attribute.Component<'elements.text-zone', true>;
+    content: Attribute.RichText;
+    classIcon: Attribute.String;
+    link: Attribute.String;
+  };
+}
+
 export interface SectionCta extends Schema.Component {
   collectionName: 'components_section_ctas';
   info: {
@@ -134,6 +149,17 @@ export interface SectionBlogSection extends Schema.Component {
       'oneToMany',
       'api::post.post'
     >;
+  };
+}
+
+export interface ElementsTextZone extends Schema.Component {
+  collectionName: 'components_elements_text_zones';
+  info: {
+    displayName: 'Text Zone';
+    icon: 'filter';
+  };
+  attributes: {
+    title: Attribute.String;
   };
 }
 
@@ -170,8 +196,10 @@ declare module '@strapi/types' {
       'section.reference-section': SectionReferenceSection;
       'section.projects-section': SectionProjectsSection;
       'section.page-intro': SectionPageIntro;
+      'section.culture-section': SectionCultureSection;
       'section.cta': SectionCta;
       'section.blog-section': SectionBlogSection;
+      'elements.text-zone': ElementsTextZone;
       'elements.button': ElementsButton;
       'elements.author': ElementsAuthor;
     }

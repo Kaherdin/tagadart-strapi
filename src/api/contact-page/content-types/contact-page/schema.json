@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "contact_pages",
+  "info": {
+    "singularName": "contact-page",
+    "pluralName": "contact-pages",
+    "displayName": "Contact Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageIntro": {
+      "type": "component",
+      "repeatable": true,
+      "component": "section.page-intro"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "offices": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.text-zone"
+    }
+  }
+}

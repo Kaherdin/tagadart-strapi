@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_elements_text_zones",
+  "info": {
+    "displayName": "Text Zone",
+    "icon": "filter"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

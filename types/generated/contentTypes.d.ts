@@ -788,6 +788,37 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAboutUsPageAboutUsPage extends Schema.SingleType {
+  collectionName: 'about_us_pages';
+  info: {
+    singularName: 'about-us-page';
+    pluralName: 'about-us-pages';
+    displayName: 'About Us Page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageIntro: Attribute.Component<'section.page-intro'>;
+    cultureSection: Attribute.Component<'section.culture-section'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::about-us-page.about-us-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::about-us-page.about-us-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBlogPageBlogPage extends Schema.SingleType {
   collectionName: 'blog_pages';
   info: {
@@ -1041,12 +1072,43 @@ export interface ApiProjectProject extends Schema.CollectionType {
   };
 }
 
-export interface ApiServicePageServicePage extends Schema.SingleType {
-  collectionName: 'service_pages';
+export interface ApiProjectsPageProjectsPage extends Schema.SingleType {
+  collectionName: 'projects_pages';
   info: {
-    singularName: 'service-page';
-    pluralName: 'service-pages';
-    displayName: 'Service Page';
+    singularName: 'projects-page';
+    pluralName: 'projects-pages';
+    displayName: 'Projects Page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageIntro: Attribute.Component<'section.page-intro'>;
+    projectsSection: Attribute.Component<'section.projects-section'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::projects-page.projects-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::projects-page.projects-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiServicesPageServicesPage extends Schema.SingleType {
+  collectionName: 'services_pages';
+  info: {
+    singularName: 'services-page';
+    pluralName: 'services-pages';
+    displayName: 'Services Page';
   };
   options: {
     draftAndPublish: true;
@@ -1058,13 +1120,13 @@ export interface ApiServicePageServicePage extends Schema.SingleType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::service-page.service-page',
+      'api::services-page.services-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::service-page.service-page',
+      'api::services-page.services-page',
       'oneToOne',
       'admin::user'
     > &
@@ -1152,6 +1214,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::about-us-page.about-us-page': ApiAboutUsPageAboutUsPage;
       'api::blog-page.blog-page': ApiBlogPageBlogPage;
       'api::client.client': ApiClientClient;
       'api::home.home': ApiHomeHome;
@@ -1159,7 +1222,8 @@ declare module '@strapi/types' {
       'api::our-service.our-service': ApiOurServiceOurService;
       'api::post.post': ApiPostPost;
       'api::project.project': ApiProjectProject;
-      'api::service-page.service-page': ApiServicePageServicePage;
+      'api::projects-page.projects-page': ApiProjectsPageProjectsPage;
+      'api::services-page.services-page': ApiServicesPageServicesPage;
       'api::tag.tag': ApiTagTag;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
     }

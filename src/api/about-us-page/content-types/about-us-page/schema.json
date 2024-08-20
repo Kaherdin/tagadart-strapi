@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_us_pages",
+  "info": {
+    "singularName": "about-us-page",
+    "pluralName": "about-us-pages",
+    "displayName": "About Us Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageIntro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.page-intro"
+    },
+    "cultureSection": {
+      "displayName": "CultureSection",
+      "type": "component",
+      "repeatable": false,
+      "component": "section.culture-section"
+    }
+  }
+}
