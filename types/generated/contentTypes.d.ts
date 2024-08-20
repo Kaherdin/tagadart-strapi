@@ -788,6 +788,37 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBlogPageBlogPage extends Schema.SingleType {
+  collectionName: 'blog_pages';
+  info: {
+    singularName: 'blog-page';
+    pluralName: 'blog-pages';
+    displayName: 'BlogPage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageIntro: Attribute.Component<'section.page-intro'>;
+    blogSection: Attribute.Component<'section.blog-section'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::blog-page.blog-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::blog-page.blog-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiClientClient extends Schema.CollectionType {
   collectionName: 'clients';
   info: {
@@ -826,6 +857,7 @@ export interface ApiHomeHome extends Schema.SingleType {
     singularName: 'home';
     pluralName: 'homes';
     displayName: 'Home';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -834,7 +866,7 @@ export interface ApiHomeHome extends Schema.SingleType {
     pageIntro: Attribute.Component<'section.page-intro'>;
     referencesSection: Attribute.Component<'section.reference-section'>;
     projectsSection: Attribute.Component<'section.projects-section'>;
-    ServicesSection: Attribute.Component<'section.services-section'>;
+    servicesSection: Attribute.Component<'section.services-section'>;
     BlogSection: Attribute.Component<'section.blog-section'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1120,6 +1152,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::blog-page.blog-page': ApiBlogPageBlogPage;
       'api::client.client': ApiClientClient;
       'api::home.home': ApiHomeHome;
       'api::member.member': ApiMemberMember;

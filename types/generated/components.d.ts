@@ -1,5 +1,29 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ElementsButton extends Schema.Component {
+  collectionName: 'components_elements_buttons';
+  info: {
+    displayName: 'Button';
+  };
+  attributes: {
+    link: Attribute.String;
+    type: Attribute.Enumeration<['primary', 'secondary']>;
+    text: Attribute.String;
+  };
+}
+
+export interface ElementsAuthor extends Schema.Component {
+  collectionName: 'components_elements_authors';
+  info: {
+    displayName: 'Author';
+  };
+  attributes: {
+    fullname: Attribute.String;
+    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    content: Attribute.RichText;
+  };
+}
+
 export interface SectionTestimonials extends Schema.Component {
   collectionName: 'components_section_testimonials';
   info: {
@@ -137,33 +161,11 @@ export interface SectionBlogSection extends Schema.Component {
   };
 }
 
-export interface ElementsButton extends Schema.Component {
-  collectionName: 'components_elements_buttons';
-  info: {
-    displayName: 'Button';
-  };
-  attributes: {
-    link: Attribute.String;
-    type: Attribute.Enumeration<['primary', 'secondary']>;
-    text: Attribute.String;
-  };
-}
-
-export interface ElementsAuthor extends Schema.Component {
-  collectionName: 'components_elements_authors';
-  info: {
-    displayName: 'Author';
-  };
-  attributes: {
-    fullname: Attribute.String;
-    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    content: Attribute.RichText;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'elements.button': ElementsButton;
+      'elements.author': ElementsAuthor;
       'section.testimonials': SectionTestimonials;
       'section.team-section': SectionTeamSection;
       'section.services-section': SectionServicesSection;
@@ -172,8 +174,6 @@ declare module '@strapi/types' {
       'section.page-intro': SectionPageIntro;
       'section.cta': SectionCta;
       'section.blog-section': SectionBlogSection;
-      'elements.button': ElementsButton;
-      'elements.author': ElementsAuthor;
     }
   }
 }
