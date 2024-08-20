@@ -1,8 +1,9 @@
 {
   "collectionName": "components_section_testimonials",
   "info": {
-    "displayName": "Testimonials",
-    "icon": "server"
+    "displayName": "TestimonialsSection",
+    "icon": "server",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -10,14 +11,15 @@
       "type": "richtext"
     },
     "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "name": {
       "type": "string"
