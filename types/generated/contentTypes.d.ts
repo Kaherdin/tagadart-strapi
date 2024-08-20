@@ -820,6 +820,32 @@ export interface ApiClientClient extends Schema.CollectionType {
   };
 }
 
+export interface ApiHomeHome extends Schema.SingleType {
+  collectionName: 'homes';
+  info: {
+    singularName: 'home';
+    pluralName: 'homes';
+    displayName: 'Home';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageIntro: Attribute.Component<'section.page-intro'>;
+    referencesSection: Attribute.Component<'section.reference-section'>;
+    projectsSection: Attribute.Component<'section.projects-section'>;
+    ServicesSection: Attribute.Component<'section.services-section'>;
+    BlogSection: Attribute.Component<'section.blog-section'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMemberMember extends Schema.CollectionType {
   collectionName: 'members';
   info: {
@@ -983,6 +1009,37 @@ export interface ApiProjectProject extends Schema.CollectionType {
   };
 }
 
+export interface ApiServicePageServicePage extends Schema.SingleType {
+  collectionName: 'service_pages';
+  info: {
+    singularName: 'service-page';
+    pluralName: 'service-pages';
+    displayName: 'Service Page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageIntro: Attribute.Component<'section.page-intro'>;
+    servicesSection: Attribute.Component<'section.services-section'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::service-page.service-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::service-page.service-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTagTag extends Schema.CollectionType {
   collectionName: 'tags';
   info: {
@@ -1064,10 +1121,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::client.client': ApiClientClient;
+      'api::home.home': ApiHomeHome;
       'api::member.member': ApiMemberMember;
       'api::our-service.our-service': ApiOurServiceOurService;
       'api::post.post': ApiPostPost;
       'api::project.project': ApiProjectProject;
+      'api::service-page.service-page': ApiServicePageServicePage;
       'api::tag.tag': ApiTagTag;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
     }
