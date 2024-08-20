@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_section_reference_sections",
+  "info": {
+    "displayName": "ReferenceSection",
+    "icon": "chartBubble"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "clients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::client.client"
+    }
+  }
+}

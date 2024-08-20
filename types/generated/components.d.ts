@@ -32,11 +32,11 @@ export interface SectionCta extends Schema.Component {
   info: {
     displayName: 'CTA';
     icon: 'cursor';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
     eyebrow: Attribute.String;
-    contentadasd: Attribute.String;
     content: Attribute.RichText;
     Buttons: Attribute.Component<'elements.button', true>;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;

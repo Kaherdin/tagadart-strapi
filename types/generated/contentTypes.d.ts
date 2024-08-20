@@ -820,6 +820,43 @@ export interface ApiClientClient extends Schema.CollectionType {
   };
 }
 
+export interface ApiMemberMember extends Schema.CollectionType {
+  collectionName: 'members';
+  info: {
+    singularName: 'member';
+    pluralName: 'members';
+    displayName: 'Member';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    fullname: Attribute.String;
+    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    email: Attribute.Email;
+    posts: Attribute.Relation<
+      'api::member.member',
+      'oneToMany',
+      'api::post.post'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::member.member',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::member.member',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOurServiceOurService extends Schema.CollectionType {
   collectionName: 'our_services';
   info: {
@@ -857,6 +894,41 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
   };
 }
 
+export interface ApiPostPost extends Schema.CollectionType {
+  collectionName: 'posts';
+  info: {
+    singularName: 'post';
+    pluralName: 'posts';
+    displayName: 'Post';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageIntro: Attribute.Component<'section.page-intro', true>;
+    classIcon: Attribute.String;
+    projects: Attribute.Relation<
+      'api::post.post',
+      'manyToMany',
+      'api::project.project'
+    >;
+    cta: Attribute.Component<'section.cta'>;
+    author: Attribute.Relation<
+      'api::post.post',
+      'manyToOne',
+      'api::member.member'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
@@ -887,6 +959,11 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::project.project',
       'manyToMany',
       'api::our-service.our-service'
+    >;
+    posts: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'api::post.post'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -954,7 +1031,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::client.client': ApiClientClient;
+      'api::member.member': ApiMemberMember;
       'api::our-service.our-service': ApiOurServiceOurService;
+      'api::post.post': ApiPostPost;
       'api::project.project': ApiProjectProject;
       'api::tag.tag': ApiTagTag;
     }
