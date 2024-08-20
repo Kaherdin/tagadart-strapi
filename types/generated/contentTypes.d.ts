@@ -820,6 +820,43 @@ export interface ApiClientClient extends Schema.CollectionType {
   };
 }
 
+export interface ApiOurServiceOurService extends Schema.CollectionType {
+  collectionName: 'our_services';
+  info: {
+    singularName: 'our-service';
+    pluralName: 'our-services';
+    displayName: 'Our service';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    classIcon: Attribute.String;
+    pageIntro: Attribute.Component<'section.page-intro'>;
+    cta: Attribute.Component<'section.cta', true>;
+    projects: Attribute.Relation<
+      'api::our-service.our-service',
+      'manyToMany',
+      'api::project.project'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::our-service.our-service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::our-service.our-service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
@@ -846,6 +883,11 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::tag.tag'
     >;
     logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    our_services: Attribute.Relation<
+      'api::project.project',
+      'manyToMany',
+      'api::our-service.our-service'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -912,6 +954,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::client.client': ApiClientClient;
+      'api::our-service.our-service': ApiOurServiceOurService;
       'api::project.project': ApiProjectProject;
       'api::tag.tag': ApiTagTag;
     }
