@@ -57,6 +57,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "mappedBy": "projects"
     }
   }
 }
