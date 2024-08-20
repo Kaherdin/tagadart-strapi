@@ -882,6 +882,39 @@ export interface ApiClientClient extends Schema.CollectionType {
   };
 }
 
+export interface ApiContactPageContactPage extends Schema.SingleType {
+  collectionName: 'contact_pages';
+  info: {
+    singularName: 'contact-page';
+    pluralName: 'contact-pages';
+    displayName: 'Contact Page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    pageIntro: Attribute.Component<'section.page-intro', true>;
+    email: Attribute.String;
+    phone: Attribute.String;
+    offices: Attribute.Component<'elements.text-zone', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-page.contact-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHomeHome extends Schema.SingleType {
   collectionName: 'homes';
   info: {
@@ -1217,6 +1250,7 @@ declare module '@strapi/types' {
       'api::about-us-page.about-us-page': ApiAboutUsPageAboutUsPage;
       'api::blog-page.blog-page': ApiBlogPageBlogPage;
       'api::client.client': ApiClientClient;
+      'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::home.home': ApiHomeHome;
       'api::member.member': ApiMemberMember;
       'api::our-service.our-service': ApiOurServiceOurService;
