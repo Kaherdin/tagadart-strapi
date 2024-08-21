@@ -2,7 +2,8 @@
   "collectionName": "components_section_reference_sections",
   "info": {
     "displayName": "ReferenceSection",
-    "icon": "chartBubble"
+    "icon": "chartBubble",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -16,6 +17,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::client.client"
+    },
+    "eyebrow": {
+      "type": "string"
     }
   }
 }

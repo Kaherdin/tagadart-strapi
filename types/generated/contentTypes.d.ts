@@ -794,6 +794,7 @@ export interface ApiAboutUsPageAboutUsPage extends Schema.SingleType {
     singularName: 'about-us-page';
     pluralName: 'about-us-pages';
     displayName: 'About Us Page';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -801,6 +802,7 @@ export interface ApiAboutUsPageAboutUsPage extends Schema.SingleType {
   attributes: {
     pageIntro: Attribute.Component<'section.page-intro'>;
     cultureSection: Attribute.Component<'section.culture-section'>;
+    teamSection: Attribute.Component<'section.team-section'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -825,6 +827,7 @@ export interface ApiBlogPageBlogPage extends Schema.SingleType {
     singularName: 'blog-page';
     pluralName: 'blog-pages';
     displayName: 'BlogPage';
+    description: '';
   };
   options: {
     draftAndPublish: true;

@@ -2,7 +2,8 @@
   "collectionName": "components_section_services_sections",
   "info": {
     "displayName": "ServicesSection",
-    "icon": "crown"
+    "icon": "crown",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -16,6 +17,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::our-service.our-service"
+    },
+    "eyebrow": {
+      "type": "string"
     }
   }
 }

@@ -2,22 +2,24 @@
   "collectionName": "components_section_blog_sections",
   "info": {
     "displayName": "BlogSection",
-    "icon": "message"
+    "icon": "message",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string"
     },
-    "avatar": {
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "content": {
       "type": "richtext"
@@ -26,6 +28,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::post.post"
+    },
+    "eyebrow": {
+      "type": "string"
     }
   }
 }

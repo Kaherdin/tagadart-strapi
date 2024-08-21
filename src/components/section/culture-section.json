@@ -2,15 +2,11 @@
   "collectionName": "components_section_culture_sections",
   "info": {
     "displayName": "CultureSection",
-    "icon": "cube"
+    "icon": "cube",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "pageIntro": {
-      "type": "component",
-      "repeatable": false,
-      "component": "section.page-intro"
-    },
     "values": {
       "displayName": "Text Zone",
       "type": "component",
@@ -25,6 +21,22 @@
     },
     "link": {
       "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "eyebrow": {
+      "type": "string"
+    },
+    "cover": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

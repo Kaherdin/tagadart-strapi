@@ -2,12 +2,16 @@
   "collectionName": "components_elements_text_zones",
   "info": {
     "displayName": "Text Zone",
-    "icon": "filter"
+    "icon": "filter",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "content": {
+      "type": "richtext"
     }
   }
 }

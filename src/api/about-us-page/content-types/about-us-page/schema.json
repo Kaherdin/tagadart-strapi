@@ -4,7 +4,8 @@
   "info": {
     "singularName": "about-us-page",
     "pluralName": "about-us-pages",
-    "displayName": "About Us Page"
+    "displayName": "About Us Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,6 +22,11 @@
       "type": "component",
       "repeatable": false,
       "component": "section.culture-section"
+    },
+    "teamSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.team-section"
     }
   }
 }
