@@ -934,7 +934,7 @@ export interface ApiHomeHome extends Schema.SingleType {
     referencesSection: Attribute.Component<'section.reference-section'>;
     projectsSection: Attribute.Component<'section.projects-section'>;
     servicesSection: Attribute.Component<'section.services-section'>;
-    BlogSection: Attribute.Component<'section.blog-section'>;
+    blogSection: Attribute.Component<'section.blog-section'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -951,6 +951,7 @@ export interface ApiMemberMember extends Schema.CollectionType {
     singularName: 'member';
     pluralName: 'members';
     displayName: 'Member';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -964,6 +965,7 @@ export interface ApiMemberMember extends Schema.CollectionType {
       'oneToMany',
       'api::post.post'
     >;
+    role: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -988,6 +990,7 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
     singularName: 'our-service';
     pluralName: 'our-services';
     displayName: 'Our service';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1001,6 +1004,7 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
       'manyToMany',
       'api::project.project'
     >;
+    content: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1031,7 +1035,7 @@ export interface ApiPostPost extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    pageIntro: Attribute.Component<'section.page-intro', true>;
+    pageIntro: Attribute.Component<'section.page-intro'>;
     classIcon: Attribute.String;
     projects: Attribute.Relation<
       'api::post.post',
@@ -1044,6 +1048,7 @@ export interface ApiPostPost extends Schema.CollectionType {
       'manyToOne',
       'api::member.member'
     >;
+    content: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

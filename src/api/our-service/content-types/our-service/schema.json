@@ -4,7 +4,8 @@
   "info": {
     "singularName": "our-service",
     "pluralName": "our-services",
-    "displayName": "Our service"
+    "displayName": "Our service",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -29,6 +30,9 @@
       "relation": "manyToMany",
       "target": "api::project.project",
       "inversedBy": "our_services"
+    },
+    "content": {
+      "type": "richtext"
     }
   }
 }

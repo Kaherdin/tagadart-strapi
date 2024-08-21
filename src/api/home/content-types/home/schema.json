@@ -32,7 +32,7 @@
       "repeatable": false,
       "component": "section.services-section"
     },
-    "BlogSection": {
+    "blogSection": {
       "type": "component",
       "repeatable": false,
       "component": "section.blog-section"

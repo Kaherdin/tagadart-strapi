@@ -14,7 +14,7 @@
   "attributes": {
     "pageIntro": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "section.page-intro"
     },
     "classIcon": {
@@ -36,6 +36,9 @@
       "relation": "manyToOne",
       "target": "api::member.member",
       "inversedBy": "posts"
+    },
+    "content": {
+      "type": "richtext"
     }
   }
 }
