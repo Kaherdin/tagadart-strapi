@@ -989,7 +989,7 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
   info: {
     singularName: 'our-service';
     pluralName: 'our-services';
-    displayName: 'Our service';
+    displayName: 'Service';
     description: '';
   };
   options: {
@@ -1077,7 +1077,6 @@ export interface ApiProjectProject extends Schema.CollectionType {
     expertise: Attribute.RichText;
     link: Attribute.String;
     pageIntro: Attribute.Component<'section.page-intro'>;
-    testimonials: Attribute.Component<'section.testimonials', true>;
     content: Attribute.RichText;
     tags: Attribute.Relation<
       'api::project.project',
@@ -1094,6 +1093,11 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'api::project.project',
       'manyToMany',
       'api::post.post'
+    >;
+    testimonials: Attribute.Relation<
+      'api::project.project',
+      'oneToMany',
+      'api::testimonial.testimonial'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1209,7 +1213,8 @@ export interface ApiTestimonialTestimonial extends Schema.CollectionType {
   info: {
     singularName: 'testimonial';
     pluralName: 'testimonials';
-    displayName: 'testimonial';
+    displayName: 'Testimonial';
+    description: '';
   };
   options: {
     draftAndPublish: true;

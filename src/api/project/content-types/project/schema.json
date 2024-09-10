@@ -33,12 +33,6 @@
       "repeatable": false,
       "component": "section.page-intro"
     },
-    "testimonials": {
-      "displayName": "Testimonials",
-      "type": "component",
-      "repeatable": true,
-      "component": "section.testimonials"
-    },
     "content": {
       "type": "richtext"
     },
@@ -49,14 +43,15 @@
       "inversedBy": "projects"
     },
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "our_services": {
       "type": "relation",
@@ -69,6 +64,11 @@
       "relation": "manyToMany",
       "target": "api::post.post",
       "mappedBy": "projects"
+    },
+    "testimonials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::testimonial.testimonial"
     }
   }
 }

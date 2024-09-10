@@ -197,11 +197,13 @@ export interface ElementsAuthor extends Schema.Component {
   collectionName: 'components_elements_authors';
   info: {
     displayName: 'Author';
+    description: '';
   };
   attributes: {
     fullname: Attribute.String;
     avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText;
+    title: Attribute.String;
   };
 }
 
