@@ -1,28 +1,75 @@
+import { parseBody } from "../../../utils/helper";
+
+const { parseMultipartData } = require("@strapi/utils");
+const fs = require("fs");
 /**
  * email-contact service
  */
 
 export default {
   emailContactService: async (ctx) => {
-    console.log(ctx.request.body, "ctx.request.body");
     try {
       if (!ctx.request.body.data) {
         console.log(ctx.request.body);
-        ctx.status = 400; // Bad Request
+        ctx.status = 400;
         ctx.body = { message: "Missing required fields data" };
         return ctx.body;
       }
 
-      const { input, emailTo } =
-        typeof ctx.request.body.data === "string"
-          ? JSON.parse(ctx.request.body.data)
-          : ctx.request.body.data;
+      // const { input, emailTo } =
+      //   typeof ctx.request.body.data === "string"
+      //     ? JSON.parse(ctx.request.body.data)
+      //     : ctx.request.body.data;
+      // const { data, files } = parseMultipartData(ctx);
+      // console.log(data, "data");
+
+      const data = parseBody(ctx).data;
+      console.log(data, "data");
+
+      //Attachements
+      // let attachements = [];
+      // if (files?.media?.length > 0) {
+      //   attachements = files?.media?.map((file) => {
+      //     return {
+      //       filename: file.name,
+      //       content: fs.readFileSync(file.path).toString("base64"),
+      //     };
+      //   });
+      // } else if (files.media) {
+      //   attachements = [
+      //     {
+      //       filename: files.media.name,
+      //       content: fs.readFileSync(files.media.path).toString("base64"),
+      //     },
+      //   ];
+      // }
+
+      function generateEmailContent(data) {
+        let htmlContent = "";
+        let textContent = "";
+
+        for (const [key, value] of Object.entries(data)) {
+          htmlContent += `<p><b>${key}</b> : ${value}</p>`;
+          textContent += `${key} : ${value}\n`;
+        }
+
+        return { htmlContent, textContent };
+      }
+
+      const { htmlContent, textContent } = generateEmailContent(data);
+
+      const emailTemplate = {
+        subject: data.subject || "Contact via le site web",
+        html: htmlContent,
+        text: textContent,
+      };
 
       await strapi.plugins["email"].services.email.send({
         from: process.env.RESEND_DEFAULT_FROM,
-        to: emailTo,
-        subject: "Hello World",
-        html: `<p>${input}</p>`,
+        to: data.emailTo,
+        ...emailTemplate,
+        // subject: "Hello World",
+        // html: `<p>${input}</p>`,
       });
 
       ctx.status = 200;
