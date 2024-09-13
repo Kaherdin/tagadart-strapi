@@ -5,15 +5,15 @@
 export default {
   emailContactService: async (ctx) => {
     try {
-      const { input, emailTo } = ctx.request.body.data || {};
-
       // Vérification des paramètres requis
-      // if (!input || !emailTo) {
-      //   ctx.status = 400; // Bad Request
-      //   return (ctx.body = {
-      //     error: "Missing required fields: 'input' or 'emailTo'.",
-      //   });
-      // }
+      if (!ctx.request.body.data) {
+        console.log(ctx.request.body);
+        ctx.status = 400; // Bad Request
+        ctx.body = { message: "Missing required fields data" };
+        return ctx.body;
+      }
+
+      const { input, emailTo } = ctx.request.body.data || {};
 
       // Envoi de l'e-mail
       await strapi.plugins["email"].services.email.send({
@@ -25,19 +25,10 @@ export default {
 
       ctx.status = 200;
       ctx.body = { message: "Email sent successfully!" };
+      return ctx.body;
     } catch (err) {
-      if (err.response) {
-        ctx.status = err.response.status || 500;
-        ctx.body = {
-          error: err.response.data || "External service error.",
-        };
-      } else {
-        ctx.status = 500;
-        ctx.body = {
-          error: "Internal server error.",
-          details: err.message,
-        };
-      }
+      console.error("Error in email sending:", err);
+      return err;
     }
   },
 };
