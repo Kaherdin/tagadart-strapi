@@ -1,44 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface ElementsTextZone extends Schema.Component {
-  collectionName: 'components_elements_text_zones';
-  info: {
-    displayName: 'Text Zone';
-    icon: 'filter';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    content: Attribute.RichText;
-  };
-}
-
-export interface ElementsButton extends Schema.Component {
-  collectionName: 'components_elements_buttons';
-  info: {
-    displayName: 'Button';
-  };
-  attributes: {
-    link: Attribute.String;
-    type: Attribute.Enumeration<['primary', 'secondary']>;
-    text: Attribute.String;
-  };
-}
-
-export interface ElementsAuthor extends Schema.Component {
-  collectionName: 'components_elements_authors';
-  info: {
-    displayName: 'Author';
-    description: '';
-  };
-  attributes: {
-    fullname: Attribute.String;
-    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    content: Attribute.RichText;
-    title: Attribute.String;
-  };
-}
-
 export interface SectionTestimonials extends Schema.Component {
   collectionName: 'components_section_testimonials';
   info: {
@@ -207,12 +168,48 @@ export interface SectionBlogSection extends Schema.Component {
   };
 }
 
+export interface ElementsTextZone extends Schema.Component {
+  collectionName: 'components_elements_text_zones';
+  info: {
+    displayName: 'Text Zone';
+    icon: 'filter';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText;
+  };
+}
+
+export interface ElementsButton extends Schema.Component {
+  collectionName: 'components_elements_buttons';
+  info: {
+    displayName: 'Button';
+  };
+  attributes: {
+    link: Attribute.String;
+    type: Attribute.Enumeration<['primary', 'secondary']>;
+    text: Attribute.String;
+  };
+}
+
+export interface ElementsAuthor extends Schema.Component {
+  collectionName: 'components_elements_authors';
+  info: {
+    displayName: 'Author';
+    description: '';
+  };
+  attributes: {
+    fullname: Attribute.String;
+    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    content: Attribute.RichText;
+    title: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'elements.text-zone': ElementsTextZone;
-      'elements.button': ElementsButton;
-      'elements.author': ElementsAuthor;
       'section.testimonials': SectionTestimonials;
       'section.team-section': SectionTeamSection;
       'section.services-section': SectionServicesSection;
@@ -222,6 +219,9 @@ declare module '@strapi/types' {
       'section.culture-section': SectionCultureSection;
       'section.cta': SectionCta;
       'section.blog-section': SectionBlogSection;
+      'elements.text-zone': ElementsTextZone;
+      'elements.button': ElementsButton;
+      'elements.author': ElementsAuthor;
     }
   }
 }

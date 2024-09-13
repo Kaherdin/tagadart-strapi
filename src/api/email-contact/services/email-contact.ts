@@ -4,8 +4,8 @@
 
 export default {
   emailContactService: async (ctx) => {
+    console.log(ctx.request.body, "ctx.request.body");
     try {
-      // Vérification des paramètres requis
       if (!ctx.request.body.data) {
         console.log(ctx.request.body);
         ctx.status = 400; // Bad Request
@@ -13,9 +13,11 @@ export default {
         return ctx.body;
       }
 
-      const { input, emailTo } = ctx.request.body.data || {};
+      const { input, emailTo } =
+        typeof ctx.request.body.data === "string"
+          ? JSON.parse(ctx.request.body.data)
+          : ctx.request.body.data;
 
-      // Envoi de l'e-mail
       await strapi.plugins["email"].services.email.send({
         from: process.env.RESEND_DEFAULT_FROM,
         to: emailTo,
@@ -28,6 +30,7 @@ export default {
       return ctx.body;
     } catch (err) {
       console.error("Error in email sending:", err);
+      throw new Error(err);
       return err;
     }
   },
