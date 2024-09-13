@@ -9,22 +9,26 @@ const fs = require("fs");
 export default {
   emailContactService: async (ctx) => {
     try {
-      if (!ctx.request.body.data) {
-        console.log(ctx.request.body);
-        ctx.status = 400;
-        ctx.body = { message: "Missing required fields data" };
-        return ctx.body;
-      }
+      // if (!ctx.request.body.data) {
+      //   console.log(ctx.request.body);
+      //   ctx.status = 400;
+      //   ctx.body = { message: "Missing required fields data" };
+      //   return ctx.body;
+      // }
 
       // const { input, emailTo } =
       //   typeof ctx.request.body.data === "string"
       //     ? JSON.parse(ctx.request.body.data)
       //     : ctx.request.body.data;
-      // const { data, files } = parseMultipartData(ctx);
-      // console.log(data, "data");
 
       const data = parseBody(ctx).data;
-      console.log(data, "data");
+
+      //Not Multipart
+      // const data =
+      //   typeof ctx.request.body.data === "string"
+      //     ? JSON.parse(ctx.request.body.data)
+      //     : ctx.request.body.data;
+      // console.log(data, "data");
 
       //Attachements
       // let attachements = [];
