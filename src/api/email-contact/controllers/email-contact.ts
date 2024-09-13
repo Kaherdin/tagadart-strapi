@@ -3,7 +3,7 @@
  */
 
 export default {
-  send: async (ctx, next) => {
+  send: async (ctx) => {
     try {
       const res = await strapi
         .service("api::email-contact.email-contact")
