@@ -17,7 +17,7 @@ export default {
 
       // Envoi de l'e-mail
       await strapi.plugins["email"].services.email.send({
-        from: "onboarding@resend.dev",
+        from: process.env.RESEND_DEFAULT_FROM,
         to: emailTo,
         subject: "Hello World",
         html: `<p>${input}</p>`,

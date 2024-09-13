@@ -20,8 +20,8 @@ export default ({ env }) => ({
         apiKey: env("RESEND_API_KEY"), // Required
       },
       settings: {
-        defaultFrom: "aurelien@tagadart.com",
-        defaultReplyTo: "aurelien@tagadart.com",
+        defaultFrom: env("RESEND_DEFAULT_FROM"),
+        defaultReplyTo: env("RESEND_DEFAULT_REPLY_TO"),
       },
     },
   },
