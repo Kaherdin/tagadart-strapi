@@ -36,7 +36,7 @@ export default {
             content: fs.readFileSync(file.path).toString("base64"),
           };
         });
-      } else if (files.media) {
+      } else if (files?.media) {
         console.log("single files");
         attachements = [
           {
