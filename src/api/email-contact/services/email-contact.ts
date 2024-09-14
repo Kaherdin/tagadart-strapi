@@ -29,6 +29,7 @@ export default {
       //Attachements
       let attachements = [];
       if (files?.media?.length > 0) {
+        console.log("multiple files");
         attachements = files?.media?.map((file) => {
           return {
             filename: file.name,
@@ -36,6 +37,7 @@ export default {
           };
         });
       } else if (files.media) {
+        console.log("single files");
         attachements = [
           {
             filename: files.media.name,
