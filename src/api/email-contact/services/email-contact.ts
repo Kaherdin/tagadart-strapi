@@ -15,20 +15,13 @@ export default {
         return ctx.body;
       }
 
-      // const { input, emailTo } =
+      //TODO: Change if to check if image
+      // const data =
       //   typeof ctx.request.body.data === "string"
-      //     ? JSON.parse(ctx.request.body.data)
+      //     ? parseBody(ctx).data
       //     : ctx.request.body.data;
-
-      // const data = parseBody(ctx).data;
-
-      //Not Multipart
-      const data =
-        typeof ctx.request.body.data === "string"
-          ? parseBody(ctx).data
-          : ctx.request.body.data;
-      console.log(data, "data");
-      console.log(typeof data, "data type");
+      // console.log(data, "data");
+      // console.log(typeof data, "data type");
 
       //Attachements
       // let attachements = [];
@@ -60,17 +53,19 @@ export default {
         return { htmlContent, textContent };
       }
 
-      const { htmlContent, textContent } = generateEmailContent(data);
+      const { htmlContent, textContent } = generateEmailContent(
+        ctx.request.body.data
+      );
 
       const emailTemplate = {
-        subject: data.subject || "Contact via le site web",
+        subject: ctx.request.body.data.subject || "Contact via le site web",
         html: htmlContent,
         text: textContent,
       };
 
       await strapi.plugins["email"].services.email.send({
         from: process.env.RESEND_DEFAULT_FROM,
-        to: data.emailTo,
+        to: ctx.request.body.data.emailTo,
         ...emailTemplate,
         // subject: "Hello World",
         // html: `<p>${input}</p>`,
