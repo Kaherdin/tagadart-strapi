@@ -16,34 +16,33 @@ export default {
       }
 
       //TODO: Change if to check if image
-      const data =
-        typeof ctx.request.body.data === "string"
-          ? parseBody(ctx).data
-          : ctx.request.body.data;
-      // console.log(data, "data");
+      // const data =
+      //   typeof ctx.request.body.data === "string"
+      //     ? parseBody(ctx).data
+      //     : ctx.request.body.data;
+
       // console.log(typeof ctx.request.body.data, "ctx.request.body.data type");
-      const { files } = parseMultipartData(ctx);
-      console.log(files, "files");
+
+      // const { files, data } = parseMultipartData(ctx);
+      const { files, data } = parseBody(ctx);
+
       //Attachements
       let attachements = [];
-      if (files?.cover?.length > 0) {
-        attachements = files?.cover?.map((file) => {
+      if (files?.media?.length > 0) {
+        attachements = files?.media?.map((file) => {
           return {
             filename: file.name,
             content: fs.readFileSync(file.path).toString("base64"),
           };
         });
-      } else if (files.cover) {
-        console.log("oui ui bien sur");
+      } else if (files.media) {
         attachements = [
           {
-            filename: files.cover.name,
-            content: fs.readFileSync(files.cover.path).toString("base64"),
+            filename: files.media.name,
+            content: fs.readFileSync(files.media.path).toString("base64"),
           },
         ];
       }
-
-      console.log(attachements, "attachements");
 
       function generateEmailContent(data) {
         let htmlContent = "";
@@ -68,8 +67,8 @@ export default {
       await strapi.plugins["email"].services.email.send({
         from: process.env.RESEND_DEFAULT_FROM,
         to: data.emailTo,
-        ...emailTemplate,
         attachments: attachements,
+        ...emailTemplate,
         // subject: "Hello World",
         // html: `<p>${input}</p>`,
       });
