@@ -14,22 +14,10 @@ export default {
         ctx.body = { message: "Missing required fields data" };
         return ctx.body;
       }
-
-      //TODO: Change if to check if image
-      // const data =
-      //   typeof ctx.request.body.data === "string"
-      //     ? parseBody(ctx).data
-      //     : ctx.request.body.data;
-
-      // console.log(typeof ctx.request.body.data, "ctx.request.body.data type");
-
-      // const { files, data } = parseMultipartData(ctx);
       const { files, data } = parseBody(ctx);
 
-      //Attachements
       let attachements = [];
       if (files?.media?.length > 0) {
-        console.log("multiple files");
         attachements = files?.media?.map((file) => {
           return {
             filename: file.name,
@@ -37,7 +25,6 @@ export default {
           };
         });
       } else if (files?.media) {
-        console.log("single files");
         attachements = [
           {
             filename: files.media.name,
