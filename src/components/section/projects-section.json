@@ -7,30 +7,15 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "content": {
-      "type": "richtext"
-    },
-    "cover": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "projects": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::project.project"
     },
-    "eyebrow": {
-      "type": "string"
+    "sectionIntro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.section-intro"
     }
   }
 }

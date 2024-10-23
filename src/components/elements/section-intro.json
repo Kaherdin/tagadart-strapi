@@ -1,25 +1,19 @@
 {
-  "collectionName": "components_section_ctas",
+  "collectionName": "components_elements_section_intros",
   "info": {
-    "displayName": "CTA",
-    "icon": "cursor",
+    "displayName": "Section Intro",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "title": {
+    "eyebrow": {
       "type": "string"
     },
-    "eyebrow": {
+    "title": {
       "type": "string"
     },
     "content": {
       "type": "richtext"
-    },
-    "Buttons": {
-      "type": "component",
-      "repeatable": true,
-      "component": "elements.button"
     },
     "cover": {
       "type": "media",
@@ -31,11 +25,6 @@
         "videos",
         "audios"
       ]
-    },
-    "sectionIntro": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.section-intro"
     }
   }
 }

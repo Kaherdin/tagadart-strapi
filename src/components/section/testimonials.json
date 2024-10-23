@@ -7,40 +7,16 @@
   },
   "options": {},
   "attributes": {
-    "content": {
-      "type": "richtext"
-    },
-    "avatar": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "title": {
-      "type": "string"
-    },
     "testimonials": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::testimonial.testimonial"
     },
-    "eyebrow": {
-      "type": "string"
-    },
-    "cover": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
+    "SectionIntro": {
+      "displayName": "Section Intro",
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.section-intro"
     }
   }
 }

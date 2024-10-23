@@ -13,30 +13,16 @@
       "repeatable": true,
       "component": "elements.text-zone"
     },
-    "content": {
-      "type": "richtext"
-    },
     "classIcon": {
       "type": "string"
     },
     "link": {
       "type": "string"
     },
-    "title": {
-      "type": "string"
-    },
-    "eyebrow": {
-      "type": "string"
-    },
-    "cover": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
+    "sectionIntro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.section-intro"
     }
   }
 }

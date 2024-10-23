@@ -8,16 +8,12 @@ export interface SectionTestimonials extends Schema.Component {
     description: '';
   };
   attributes: {
-    content: Attribute.RichText;
-    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    title: Attribute.String;
     testimonials: Attribute.Relation<
       'section.testimonials',
       'oneToMany',
       'api::testimonial.testimonial'
     >;
-    eyebrow: Attribute.String;
-    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    SectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
 
@@ -38,6 +34,7 @@ export interface SectionTeamSection extends Schema.Component {
       'api::member.member'
     >;
     eyebrow: Attribute.String;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
 
@@ -49,14 +46,12 @@ export interface SectionServicesSection extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    content: Attribute.RichText;
     our_services: Attribute.Relation<
       'section.services-section',
       'oneToMany',
       'api::our-service.our-service'
     >;
-    eyebrow: Attribute.String;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
 
@@ -68,14 +63,12 @@ export interface SectionReferenceSection extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    content: Attribute.RichText;
     clients: Attribute.Relation<
       'section.reference-section',
       'oneToMany',
       'api::client.client'
     >;
-    eyebrow: Attribute.String;
+    sectionIntro: Attribute.Component<'elements.section-intro', true>;
   };
 }
 
@@ -87,15 +80,12 @@ export interface SectionProjectsSection extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    content: Attribute.RichText;
-    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     projects: Attribute.Relation<
       'section.projects-section',
       'oneToMany',
       'api::project.project'
     >;
-    eyebrow: Attribute.String;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
 
@@ -114,6 +104,30 @@ export interface SectionPageIntro extends Schema.Component {
   };
 }
 
+export interface SectionHeroSection extends Schema.Component {
+  collectionName: 'components_section_hero_sections';
+  info: {
+    displayName: 'Hero Section';
+  };
+  attributes: {
+    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    eyebrow: Attribute.String;
+    title: Attribute.String;
+    content: Attribute.RichText;
+  };
+}
+
+export interface SectionFeaturesSection extends Schema.Component {
+  collectionName: 'components_section_features_sections';
+  info: {
+    displayName: 'Features Section';
+    icon: 'dashboard';
+  };
+  attributes: {
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+  };
+}
+
 export interface SectionCultureSection extends Schema.Component {
   collectionName: 'components_section_culture_sections';
   info: {
@@ -123,12 +137,9 @@ export interface SectionCultureSection extends Schema.Component {
   };
   attributes: {
     values: Attribute.Component<'elements.text-zone', true>;
-    content: Attribute.RichText;
     classIcon: Attribute.String;
     link: Attribute.String;
-    title: Attribute.String;
-    eyebrow: Attribute.String;
-    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
 
@@ -145,6 +156,7 @@ export interface SectionCta extends Schema.Component {
     content: Attribute.RichText;
     Buttons: Attribute.Component<'elements.button', true>;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
 
@@ -156,15 +168,12 @@ export interface SectionBlogSection extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    content: Attribute.RichText;
     posts: Attribute.Relation<
       'section.blog-section',
       'oneToMany',
       'api::post.post'
     >;
-    eyebrow: Attribute.String;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
 
@@ -178,6 +187,20 @@ export interface ElementsTextZone extends Schema.Component {
   attributes: {
     title: Attribute.String;
     content: Attribute.RichText;
+  };
+}
+
+export interface ElementsSectionIntro extends Schema.Component {
+  collectionName: 'components_elements_section_intros';
+  info: {
+    displayName: 'Section Intro';
+    description: '';
+  };
+  attributes: {
+    eyebrow: Attribute.String;
+    title: Attribute.String;
+    content: Attribute.RichText;
+    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
@@ -216,10 +239,13 @@ declare module '@strapi/types' {
       'section.reference-section': SectionReferenceSection;
       'section.projects-section': SectionProjectsSection;
       'section.page-intro': SectionPageIntro;
+      'section.hero-section': SectionHeroSection;
+      'section.features-section': SectionFeaturesSection;
       'section.culture-section': SectionCultureSection;
       'section.cta': SectionCta;
       'section.blog-section': SectionBlogSection;
       'elements.text-zone': ElementsTextZone;
+      'elements.section-intro': ElementsSectionIntro;
       'elements.button': ElementsButton;
       'elements.author': ElementsAuthor;
     }
