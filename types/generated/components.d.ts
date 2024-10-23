@@ -46,14 +46,11 @@ export interface SectionServicesSection extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    content: Attribute.RichText;
     our_services: Attribute.Relation<
       'section.services-section',
       'oneToMany',
       'api::our-service.our-service'
     >;
-    eyebrow: Attribute.String;
     sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
@@ -83,15 +80,12 @@ export interface SectionProjectsSection extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    content: Attribute.RichText;
-    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     projects: Attribute.Relation<
       'section.projects-section',
       'oneToMany',
       'api::project.project'
     >;
-    eyebrow: Attribute.String;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
 
@@ -123,6 +117,17 @@ export interface SectionHeroSection extends Schema.Component {
   };
 }
 
+export interface SectionFeaturesSection extends Schema.Component {
+  collectionName: 'components_section_features_sections';
+  info: {
+    displayName: 'Features Section';
+    icon: 'dashboard';
+  };
+  attributes: {
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+  };
+}
+
 export interface SectionCultureSection extends Schema.Component {
   collectionName: 'components_section_culture_sections';
   info: {
@@ -134,7 +139,6 @@ export interface SectionCultureSection extends Schema.Component {
     values: Attribute.Component<'elements.text-zone', true>;
     classIcon: Attribute.String;
     link: Attribute.String;
-    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
@@ -236,6 +240,7 @@ declare module '@strapi/types' {
       'section.projects-section': SectionProjectsSection;
       'section.page-intro': SectionPageIntro;
       'section.hero-section': SectionHeroSection;
+      'section.features-section': SectionFeaturesSection;
       'section.culture-section': SectionCultureSection;
       'section.cta': SectionCta;
       'section.blog-section': SectionBlogSection;

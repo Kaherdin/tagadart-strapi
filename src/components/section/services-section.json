@@ -7,19 +7,10 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "content": {
-      "type": "richtext"
-    },
     "our_services": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::our-service.our-service"
-    },
-    "eyebrow": {
-      "type": "string"
     },
     "sectionIntro": {
       "type": "component",

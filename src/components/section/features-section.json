@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_section_features_sections",
+  "info": {
+    "displayName": "Features Section",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "sectionIntro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.section-intro"
+    }
+  }
+}

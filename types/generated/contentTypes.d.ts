@@ -1044,7 +1044,10 @@ export interface ApiPagePage extends Schema.CollectionType {
         'section.projects-section',
         'section.blog-section',
         'section.cta',
-        'section.hero-section'
+        'section.hero-section',
+        'section.features-section',
+        'section.culture-section',
+        'section.page-intro'
       ]
     >;
     slug: Attribute.UID;
