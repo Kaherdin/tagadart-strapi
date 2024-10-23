@@ -66,14 +66,11 @@ export interface SectionReferenceSection extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    content: Attribute.RichText;
     clients: Attribute.Relation<
       'section.reference-section',
       'oneToMany',
       'api::client.client'
     >;
-    eyebrow: Attribute.String;
     sectionIntro: Attribute.Component<'elements.section-intro', true>;
   };
 }
@@ -135,11 +132,8 @@ export interface SectionCultureSection extends Schema.Component {
   };
   attributes: {
     values: Attribute.Component<'elements.text-zone', true>;
-    content: Attribute.RichText;
     classIcon: Attribute.String;
     link: Attribute.String;
-    title: Attribute.String;
-    eyebrow: Attribute.String;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
@@ -201,7 +195,7 @@ export interface ElementsSectionIntro extends Schema.Component {
   attributes: {
     eyebrow: Attribute.String;
     title: Attribute.String;
-    text: Attribute.RichText;
+    content: Attribute.RichText;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }

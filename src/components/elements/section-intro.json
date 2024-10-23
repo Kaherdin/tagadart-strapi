@@ -12,18 +12,19 @@
     "title": {
       "type": "string"
     },
-    "text": {
+    "content": {
       "type": "richtext"
     },
     "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }
