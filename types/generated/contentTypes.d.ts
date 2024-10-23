@@ -1023,6 +1023,41 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
   };
 }
 
+export interface ApiPagePage extends Schema.CollectionType {
+  collectionName: 'pages';
+  info: {
+    singularName: 'page';
+    pluralName: 'pages';
+    displayName: 'Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    structure: Attribute.DynamicZone<
+      [
+        'section.testimonials',
+        'section.team-section',
+        'section.services-section',
+        'section.reference-section',
+        'section.projects-section',
+        'section.blog-section',
+        'section.cta',
+        'section.hero-section'
+      ]
+    >;
+    slug: Attribute.UID;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPostPost extends Schema.CollectionType {
   collectionName: 'posts';
   info: {
@@ -1267,6 +1302,7 @@ declare module '@strapi/types' {
       'api::home.home': ApiHomeHome;
       'api::member.member': ApiMemberMember;
       'api::our-service.our-service': ApiOurServiceOurService;
+      'api::page.page': ApiPagePage;
       'api::post.post': ApiPostPost;
       'api::project.project': ApiProjectProject;
       'api::projects-page.projects-page': ApiProjectsPageProjectsPage;

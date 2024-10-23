@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_section_hero_sections",
+  "info": {
+    "displayName": "Hero Section"
+  },
+  "options": {},
+  "attributes": {
+    "cover": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "eyebrow": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

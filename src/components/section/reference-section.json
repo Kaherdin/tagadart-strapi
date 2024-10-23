@@ -20,6 +20,11 @@
     },
     "eyebrow": {
       "type": "string"
+    },
+    "sectionIntro": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.section-intro"
     }
   }
 }
