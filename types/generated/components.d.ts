@@ -68,7 +68,7 @@ export interface SectionReferenceSection extends Schema.Component {
       'oneToMany',
       'api::client.client'
     >;
-    sectionIntro: Attribute.Component<'elements.section-intro', true>;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
 
@@ -108,12 +108,12 @@ export interface SectionHeroSection extends Schema.Component {
   collectionName: 'components_section_hero_sections';
   info: {
     displayName: 'Hero Section';
+    description: '';
   };
   attributes: {
-    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    eyebrow: Attribute.String;
-    title: Attribute.String;
-    content: Attribute.RichText;
+    buttons: Attribute.Component<'elements.button', true>;
+    logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
 
@@ -122,9 +122,11 @@ export interface SectionFeaturesSection extends Schema.Component {
   info: {
     displayName: 'Features Section';
     icon: 'dashboard';
+    description: '';
   };
   attributes: {
     sectionIntro: Attribute.Component<'elements.section-intro'>;
+    features: Attribute.Component<'elements.features', true>;
   };
 }
 
@@ -204,6 +206,19 @@ export interface ElementsSectionIntro extends Schema.Component {
   };
 }
 
+export interface ElementsFeatures extends Schema.Component {
+  collectionName: 'components_elements_features';
+  info: {
+    displayName: 'features';
+  };
+  attributes: {
+    name: Attribute.String;
+    content: Attribute.RichText;
+    link: Attribute.String;
+    classIcon: Attribute.String;
+  };
+}
+
 export interface ElementsButton extends Schema.Component {
   collectionName: 'components_elements_buttons';
   info: {
@@ -246,6 +261,7 @@ declare module '@strapi/types' {
       'section.blog-section': SectionBlogSection;
       'elements.text-zone': ElementsTextZone;
       'elements.section-intro': ElementsSectionIntro;
+      'elements.features': ElementsFeatures;
       'elements.button': ElementsButton;
       'elements.author': ElementsAuthor;
     }

@@ -14,7 +14,7 @@
     },
     "sectionIntro": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "elements.section-intro"
     }
   }
