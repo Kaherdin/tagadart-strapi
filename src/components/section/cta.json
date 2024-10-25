@@ -1,36 +1,15 @@
 {
-  "collectionName": "components_section_ctas",
+  "collectionName": "components_section_cta_sections",
   "info": {
-    "displayName": "CTA",
-    "icon": "cursor",
+    "displayName": "CTA Section",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "eyebrow": {
-      "type": "string"
-    },
-    "content": {
-      "type": "richtext"
-    },
-    "Buttons": {
+    "buttons": {
       "type": "component",
       "repeatable": true,
       "component": "elements.button"
-    },
-    "cover": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
     },
     "sectionIntro": {
       "type": "component",

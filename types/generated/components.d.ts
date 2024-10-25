@@ -146,18 +146,13 @@ export interface SectionCultureSection extends Schema.Component {
 }
 
 export interface SectionCta extends Schema.Component {
-  collectionName: 'components_section_ctas';
+  collectionName: 'components_section_cta_sections';
   info: {
-    displayName: 'CTA';
-    icon: 'cursor';
+    displayName: 'CTA Section';
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    eyebrow: Attribute.String;
-    content: Attribute.RichText;
-    Buttons: Attribute.Component<'elements.button', true>;
-    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    buttons: Attribute.Component<'elements.button', true>;
     sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
