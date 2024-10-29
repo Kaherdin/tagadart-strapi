@@ -169,6 +169,17 @@ export interface SectionCta extends Schema.Component {
   };
 }
 
+export interface SectionContactSection extends Schema.Component {
+  collectionName: 'components_section_contact_sections';
+  info: {
+    displayName: 'Contact Section';
+    icon: 'discuss';
+  };
+  attributes: {
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+  };
+}
+
 export interface SectionBlogSection extends Schema.Component {
   collectionName: 'components_section_blog_sections';
   info: {
@@ -296,6 +307,7 @@ declare module '@strapi/types' {
       'section.features-section': SectionFeaturesSection;
       'section.culture-section': SectionCultureSection;
       'section.cta': SectionCta;
+      'section.contact-section': SectionContactSection;
       'section.blog-section': SectionBlogSection;
       'elements.text-zone': ElementsTextZone;
       'elements.section-intro': ElementsSectionIntro;

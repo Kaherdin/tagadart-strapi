@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_section_contact_sections",
+  "info": {
+    "displayName": "Contact Section",
+    "icon": "discuss"
+  },
+  "options": {},
+  "attributes": {
+    "sectionIntro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.section-intro"
+    }
+  }
+}
