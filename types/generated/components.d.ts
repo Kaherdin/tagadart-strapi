@@ -177,6 +177,7 @@ export interface SectionContactSection extends Schema.Component {
   };
   attributes: {
     sectionIntro: Attribute.Component<'elements.section-intro'>;
+    content: Attribute.Component<'elements.contact-content'>;
     buttons: Attribute.Component<'elements.button', true>;
     formEnabled: Attribute.Boolean & Attribute.DefaultTo<true>;
   };

@@ -11,12 +11,12 @@
       "repeatable": false,
       "component": "elements.section-intro"
     },
-
-    "buttons": {
+    "content": {
       "type": "component",
-      "repeatable": true,
-      "component": "elements.button"
+      "repeatable": false,
+      "component": "elements.contact-content"
     },
+
     "formEnabled": {
       "type": "boolean",
       "default": true
