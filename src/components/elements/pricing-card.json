@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_elements_pricing_cards",
+  "info": {
+    "displayName": "Pricing Card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "string",
+      "required": true
+    },
+    "frequency": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "popular": {
+      "type": "boolean",
+      "default": false
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.pricing-feature"
+    }
+  }
+}

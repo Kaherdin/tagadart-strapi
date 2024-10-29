@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_section_cta_sections",
+  "collectionName": "components_section_hero_sections",
   "info": {
-    "displayName": "CTA Section",
+    "displayName": "Hero Section",
     "description": ""
   },
   "options": {},
@@ -10,6 +10,16 @@
       "type": "component",
       "repeatable": true,
       "component": "elements.button"
+    },
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     },
     "sectionIntro": {
       "type": "component",

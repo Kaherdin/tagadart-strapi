@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_elements_features",
+  "info": {
+    "displayName": "features"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "link": {
+      "type": "string"
+    },
+    "classIcon": {
+      "type": "string"
+    }
+  }
+}

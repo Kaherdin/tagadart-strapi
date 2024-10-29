@@ -7,30 +7,15 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "cover": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "content": {
-      "type": "richtext"
-    },
     "posts": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::post.post"
     },
-    "eyebrow": {
-      "type": "string"
+    "sectionIntro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.section-intro"
     }
   }
 }

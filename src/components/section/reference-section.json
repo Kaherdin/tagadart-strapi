@@ -7,19 +7,15 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
-    "content": {
-      "type": "richtext"
-    },
     "clients": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::client.client"
     },
-    "eyebrow": {
-      "type": "string"
+    "sectionIntro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.section-intro"
     }
   }
 }
