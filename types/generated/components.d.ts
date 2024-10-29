@@ -89,6 +89,18 @@ export interface SectionProjectsSection extends Schema.Component {
   };
 }
 
+export interface SectionPricingSection extends Schema.Component {
+  collectionName: 'components_section_pricing_sections';
+  info: {
+    displayName: 'Pricing Section';
+    description: '';
+  };
+  attributes: {
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+    cards: Attribute.Component<'elements.pricing-card', true>;
+  };
+}
+
 export interface SectionPageIntro extends Schema.Component {
   collectionName: 'components_section_page_intros';
   info: {
@@ -201,6 +213,36 @@ export interface ElementsSectionIntro extends Schema.Component {
   };
 }
 
+export interface ElementsPricingFeature extends Schema.Component {
+  collectionName: 'components_elements_pricing_features';
+  info: {
+    displayName: 'Pricing Feature';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.String & Attribute.Required;
+    included: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+  };
+}
+
+export interface ElementsPricingCard extends Schema.Component {
+  collectionName: 'components_elements_pricing_cards';
+  info: {
+    displayName: 'Pricing Card';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    price: Attribute.String & Attribute.Required;
+    frequency: Attribute.String & Attribute.Required;
+    content: Attribute.Text & Attribute.Required;
+    popular: Attribute.Boolean & Attribute.DefaultTo<false>;
+    features: Attribute.Component<'elements.pricing-feature', true>;
+  };
+}
+
 export interface ElementsFeatures extends Schema.Component {
   collectionName: 'components_elements_features';
   info: {
@@ -248,6 +290,7 @@ declare module '@strapi/types' {
       'section.services-section': SectionServicesSection;
       'section.reference-section': SectionReferenceSection;
       'section.projects-section': SectionProjectsSection;
+      'section.pricing-section': SectionPricingSection;
       'section.page-intro': SectionPageIntro;
       'section.hero-section': SectionHeroSection;
       'section.features-section': SectionFeaturesSection;
@@ -256,6 +299,8 @@ declare module '@strapi/types' {
       'section.blog-section': SectionBlogSection;
       'elements.text-zone': ElementsTextZone;
       'elements.section-intro': ElementsSectionIntro;
+      'elements.pricing-feature': ElementsPricingFeature;
+      'elements.pricing-card': ElementsPricingCard;
       'elements.features': ElementsFeatures;
       'elements.button': ElementsButton;
       'elements.author': ElementsAuthor;

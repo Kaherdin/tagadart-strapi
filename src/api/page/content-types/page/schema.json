@@ -25,7 +25,8 @@
         "section.hero-section",
         "section.features-section",
         "section.culture-section",
-        "section.page-intro"
+        "section.page-intro",
+        "section.pricing-section"
       ]
     },
     "slug": {
