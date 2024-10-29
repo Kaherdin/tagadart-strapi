@@ -173,10 +173,12 @@ export interface SectionContactSection extends Schema.Component {
   collectionName: 'components_section_contact_sections';
   info: {
     displayName: 'Contact Section';
-    icon: 'discuss';
+    description: '';
   };
   attributes: {
     sectionIntro: Attribute.Component<'elements.section-intro'>;
+    buttons: Attribute.Component<'elements.button', true>;
+    formEnabled: Attribute.Boolean & Attribute.DefaultTo<true>;
   };
 }
 
@@ -207,6 +209,19 @@ export interface ElementsTextZone extends Schema.Component {
   attributes: {
     title: Attribute.String;
     content: Attribute.RichText;
+  };
+}
+
+export interface ElementsSocialNetwork extends Schema.Component {
+  collectionName: 'components_elements_social_networks';
+  info: {
+    displayName: 'Social Network';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    url: Attribute.String & Attribute.Required;
+    icon: Attribute.String & Attribute.Required;
   };
 }
 
@@ -254,6 +269,19 @@ export interface ElementsPricingCard extends Schema.Component {
   };
 }
 
+export interface ElementsOffices extends Schema.Component {
+  collectionName: 'components_elements_offices';
+  info: {
+    displayName: 'Office';
+    description: '';
+  };
+  attributes: {
+    city: Attribute.String & Attribute.Required;
+    country: Attribute.String & Attribute.Required;
+    address: Attribute.Text & Attribute.Required;
+  };
+}
+
 export interface ElementsFeatures extends Schema.Component {
   collectionName: 'components_elements_features';
   info: {
@@ -264,6 +292,33 @@ export interface ElementsFeatures extends Schema.Component {
     content: Attribute.RichText;
     link: Attribute.String;
     classIcon: Attribute.String;
+  };
+}
+
+export interface ElementsEmailContact extends Schema.Component {
+  collectionName: 'components_elements_email_contacts';
+  info: {
+    displayName: 'Email Contact';
+    description: '';
+  };
+  attributes: {
+    label: Attribute.String & Attribute.Required;
+    email: Attribute.Email & Attribute.Required;
+  };
+}
+
+export interface ElementsContactContent extends Schema.Component {
+  collectionName: 'components_elements_content_contacts';
+  info: {
+    displayName: 'Contact Content';
+    description: '';
+  };
+  attributes: {
+    label: Attribute.String & Attribute.Required;
+    email: Attribute.Email & Attribute.Required;
+    offices: Attribute.Component<'elements.offices', true>;
+    emails: Attribute.Component<'elements.email-contact', true>;
+    socials: Attribute.Component<'elements.social-network', true>;
   };
 }
 
@@ -310,10 +365,14 @@ declare module '@strapi/types' {
       'section.contact-section': SectionContactSection;
       'section.blog-section': SectionBlogSection;
       'elements.text-zone': ElementsTextZone;
+      'elements.social-network': ElementsSocialNetwork;
       'elements.section-intro': ElementsSectionIntro;
       'elements.pricing-feature': ElementsPricingFeature;
       'elements.pricing-card': ElementsPricingCard;
+      'elements.offices': ElementsOffices;
       'elements.features': ElementsFeatures;
+      'elements.email-contact': ElementsEmailContact;
+      'elements.contact-content': ElementsContactContent;
       'elements.button': ElementsButton;
       'elements.author': ElementsAuthor;
     }

@@ -2,7 +2,7 @@
   "collectionName": "components_section_contact_sections",
   "info": {
     "displayName": "Contact Section",
-    "icon": "discuss"
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -10,6 +10,16 @@
       "type": "component",
       "repeatable": false,
       "component": "elements.section-intro"
+    },
+
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.button"
+    },
+    "formEnabled": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
