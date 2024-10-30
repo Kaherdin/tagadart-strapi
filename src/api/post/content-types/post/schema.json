@@ -39,6 +39,10 @@
     },
     "content": {
       "type": "richtext"
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
     }
   }
 }

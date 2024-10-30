@@ -1,9 +1,21 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface SectionTextSection extends Schema.Component {
+  collectionName: 'components_section_text_sections';
+  info: {
+    displayName: 'Text Section';
+    icon: 'write';
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText;
+  };
+}
+
 export interface SectionTestimonials extends Schema.Component {
   collectionName: 'components_section_testimonials';
   info: {
-    displayName: 'TestimonialsSection';
+    displayName: 'Testimonials Section';
     icon: 'server';
     description: '';
   };
@@ -20,7 +32,7 @@ export interface SectionTestimonials extends Schema.Component {
 export interface SectionTeamSection extends Schema.Component {
   collectionName: 'components_section_team_sections';
   info: {
-    displayName: 'TeamSection';
+    displayName: 'Team Section';
     icon: 'alien';
     description: '';
   };
@@ -41,7 +53,7 @@ export interface SectionTeamSection extends Schema.Component {
 export interface SectionServicesSection extends Schema.Component {
   collectionName: 'components_section_services_sections';
   info: {
-    displayName: 'ServicesSection';
+    displayName: 'Services Section';
     icon: 'crown';
     description: '';
   };
@@ -58,7 +70,7 @@ export interface SectionServicesSection extends Schema.Component {
 export interface SectionReferenceSection extends Schema.Component {
   collectionName: 'components_section_reference_sections';
   info: {
-    displayName: 'ReferenceSection';
+    displayName: 'Reference Section';
     icon: 'chartBubble';
     description: '';
   };
@@ -233,7 +245,7 @@ export interface ElementsSectionIntro extends Schema.Component {
   };
   attributes: {
     eyebrow: Attribute.String;
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required;
     content: Attribute.RichText;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
@@ -349,6 +361,7 @@ export interface ElementsAuthor extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'section.text-section': SectionTextSection;
       'section.testimonials': SectionTestimonials;
       'section.team-section': SectionTeamSection;
       'section.services-section': SectionServicesSection;

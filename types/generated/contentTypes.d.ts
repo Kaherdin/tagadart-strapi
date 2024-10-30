@@ -1089,6 +1089,7 @@ export interface ApiPostPost extends Schema.CollectionType {
       'api::member.member'
     >;
     content: Attribute.RichText;
+    slug: Attribute.UID & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1148,7 +1149,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
         'section.services-section',
         'section.pricing-section',
         'section.projects-section',
-        'elements.text-zone'
+        'section.text-section'
       ]
     >;
     createdAt: Attribute.DateTime;
