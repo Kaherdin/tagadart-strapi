@@ -1144,7 +1144,11 @@ export interface ApiProjectProject extends Schema.CollectionType {
         'section.testimonials',
         'section.features-section',
         'section.cta',
-        'section.blog-section'
+        'section.blog-section',
+        'section.services-section',
+        'section.pricing-section',
+        'section.projects-section',
+        'elements.text-zone'
       ]
     >;
     createdAt: Attribute.DateTime;

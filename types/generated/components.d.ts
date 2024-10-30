@@ -75,7 +75,7 @@ export interface SectionReferenceSection extends Schema.Component {
 export interface SectionProjectsSection extends Schema.Component {
   collectionName: 'components_section_projects_sections';
   info: {
-    displayName: 'ProjectsSection';
+    displayName: 'Projects Section';
     icon: 'archive';
     description: '';
   };
@@ -145,7 +145,7 @@ export interface SectionFeaturesSection extends Schema.Component {
 export interface SectionCultureSection extends Schema.Component {
   collectionName: 'components_section_culture_sections';
   info: {
-    displayName: 'CultureSection';
+    displayName: 'Culture Section';
     icon: 'cube';
     description: '';
   };
@@ -185,7 +185,7 @@ export interface SectionContactSection extends Schema.Component {
 export interface SectionBlogSection extends Schema.Component {
   collectionName: 'components_section_blog_sections';
   info: {
-    displayName: 'BlogSection';
+    displayName: 'Blog Section';
     icon: 'message';
     description: '';
   };
