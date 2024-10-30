@@ -178,7 +178,6 @@ export interface SectionContactSection extends Schema.Component {
   attributes: {
     sectionIntro: Attribute.Component<'elements.section-intro'>;
     content: Attribute.Component<'elements.contact-content'>;
-    buttons: Attribute.Component<'elements.button', true>;
     formEnabled: Attribute.Boolean & Attribute.DefaultTo<true>;
   };
 }
@@ -315,8 +314,6 @@ export interface ElementsContactContent extends Schema.Component {
     description: '';
   };
   attributes: {
-    label: Attribute.String & Attribute.Required;
-    email: Attribute.Email & Attribute.Required;
     offices: Attribute.Component<'elements.offices', true>;
     emails: Attribute.Component<'elements.email-contact', true>;
     socials: Attribute.Component<'elements.social-network', true>;

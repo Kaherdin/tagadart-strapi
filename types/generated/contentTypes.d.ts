@@ -1139,6 +1139,14 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'oneToMany',
       'api::testimonial.testimonial'
     >;
+    structure: Attribute.DynamicZone<
+      [
+        'section.testimonials',
+        'section.features-section',
+        'section.cta',
+        'section.blog-section'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

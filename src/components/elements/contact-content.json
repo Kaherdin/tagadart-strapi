@@ -6,14 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "label": {
-      "type": "string",
-      "required": true
-    },
-    "email": {
-      "type": "email",
-      "required": true
-    },
     "offices": {
       "type": "component",
       "repeatable": true,
