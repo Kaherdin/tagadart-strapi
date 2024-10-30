@@ -15,6 +15,14 @@
       "type": "component",
       "repeatable": false,
       "component": "elements.section-intro"
+    },
+    "align": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ]
     }
   }
 }
