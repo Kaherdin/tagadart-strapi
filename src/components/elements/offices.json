@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_elements_offices",
+  "info": {
+    "displayName": "Office",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "country": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

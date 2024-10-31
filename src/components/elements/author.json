@@ -23,7 +23,7 @@
     "content": {
       "type": "richtext"
     },
-    "title": {
+    "role": {
       "type": "string"
     }
   }

@@ -1,7 +1,7 @@
 {
   "collectionName": "components_section_team_sections",
   "info": {
-    "displayName": "TeamSection",
+    "displayName": "Team Section",
     "icon": "alien",
     "description": ""
   },
@@ -17,12 +17,7 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "members": {
       "type": "relation",

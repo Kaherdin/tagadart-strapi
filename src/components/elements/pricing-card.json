@@ -30,6 +30,9 @@
       "type": "component",
       "repeatable": true,
       "component": "elements.pricing-feature"
+    },
+    "link": {
+      "type": "string"
     }
   }
 }

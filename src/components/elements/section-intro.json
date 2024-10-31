@@ -10,7 +10,8 @@
       "type": "string"
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "content": {
       "type": "richtext"
