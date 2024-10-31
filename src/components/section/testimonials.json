@@ -12,7 +12,7 @@
       "relation": "oneToMany",
       "target": "api::testimonial.testimonial"
     },
-    "SectionIntro": {
+    "sectionIntro": {
       "displayName": "Section Intro",
       "type": "component",
       "repeatable": false,

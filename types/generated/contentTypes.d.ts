@@ -1005,6 +1005,7 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
       'api::project.project'
     >;
     content: Attribute.RichText;
+    slug: Attribute.UID & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1152,6 +1153,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
         'section.text-section'
       ]
     >;
+    slug: Attribute.UID & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1277,6 +1279,7 @@ export interface ApiTestimonialTestimonial extends Schema.CollectionType {
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText;
     author: Attribute.Component<'elements.author'>;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

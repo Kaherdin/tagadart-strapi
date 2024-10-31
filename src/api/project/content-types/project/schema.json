@@ -82,6 +82,10 @@
         "section.projects-section",
         "section.text-section"
       ]
+    },
+    "slug": {
+      "type": "uid",
+      "required": true
     }
   }
 }
