@@ -37,6 +37,19 @@
     "slug": {
       "type": "uid",
       "required": true
+    },
+    "structure": {
+      "type": "dynamiczone",
+      "components": [
+        "section.text-section",
+        "section.testimonials",
+        "section.services-section",
+        "section.projects-section",
+        "section.pricing-section",
+        "section.features-section",
+        "section.cta",
+        "section.blog-section"
+      ]
     }
   }
 }

@@ -1006,6 +1006,18 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
     >;
     content: Attribute.RichText;
     slug: Attribute.UID & Attribute.Required;
+    structure: Attribute.DynamicZone<
+      [
+        'section.text-section',
+        'section.testimonials',
+        'section.services-section',
+        'section.projects-section',
+        'section.pricing-section',
+        'section.features-section',
+        'section.cta',
+        'section.blog-section'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1091,6 +1103,18 @@ export interface ApiPostPost extends Schema.CollectionType {
     >;
     content: Attribute.RichText;
     slug: Attribute.UID & Attribute.Required;
+    structure: Attribute.DynamicZone<
+      [
+        'section.text-section',
+        'section.testimonials',
+        'section.services-section',
+        'section.projects-section',
+        'section.pricing-section',
+        'section.features-section',
+        'section.cta',
+        'section.blog-section'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
