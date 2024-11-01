@@ -996,7 +996,7 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    classIcon: Attribute.String;
+    classIcon: Attribute.String & Attribute.Required;
     pageIntro: Attribute.Component<'section.page-intro'>;
     cta: Attribute.Component<'section.cta', true>;
     projects: Attribute.Relation<

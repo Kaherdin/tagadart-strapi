@@ -13,7 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "classIcon": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "pageIntro": {
       "type": "component",
