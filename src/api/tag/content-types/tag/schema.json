@@ -17,12 +17,6 @@
     },
     "classIcon": {
       "type": "string"
-    },
-    "projects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project.project",
-      "mappedBy": "tags"
     }
   }
 }

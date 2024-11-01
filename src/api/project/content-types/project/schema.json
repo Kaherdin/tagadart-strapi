@@ -33,15 +33,6 @@
       "repeatable": false,
       "component": "section.page-intro"
     },
-    "content": {
-      "type": "richtext"
-    },
-    "tags": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "inversedBy": "projects"
-    },
     "logo": {
       "type": "media",
       "multiple": false,
@@ -52,23 +43,6 @@
         "videos",
         "audios"
       ]
-    },
-    "our_services": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::our-service.our-service",
-      "mappedBy": "projects"
-    },
-    "posts": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::post.post",
-      "mappedBy": "projects"
-    },
-    "testimonials": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::testimonial.testimonial"
     },
     "structure": {
       "type": "dynamiczone",

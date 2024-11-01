@@ -21,20 +21,6 @@
       "repeatable": false,
       "component": "section.page-intro"
     },
-    "cta": {
-      "type": "component",
-      "repeatable": true,
-      "component": "section.cta"
-    },
-    "projects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project.project",
-      "inversedBy": "our_services"
-    },
-    "content": {
-      "type": "richtext"
-    },
     "slug": {
       "type": "uid",
       "required": true

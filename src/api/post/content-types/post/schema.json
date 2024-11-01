@@ -20,31 +20,16 @@
     "classIcon": {
       "type": "string"
     },
-    "projects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project.project",
-      "inversedBy": "posts"
-    },
-    "cta": {
-      "type": "component",
-      "repeatable": false,
-      "component": "section.cta"
-    },
     "author": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::member.member",
       "inversedBy": "posts"
     },
-    "content": {
-      "type": "richtext"
-    },
     "slug": {
       "type": "uid",
       "required": true
     },
-
     "structure": {
       "type": "dynamiczone",
       "components": [

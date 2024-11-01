@@ -998,13 +998,6 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
   attributes: {
     classIcon: Attribute.String & Attribute.Required;
     pageIntro: Attribute.Component<'section.page-intro'>;
-    cta: Attribute.Component<'section.cta', true>;
-    projects: Attribute.Relation<
-      'api::our-service.our-service',
-      'manyToMany',
-      'api::project.project'
-    >;
-    content: Attribute.RichText;
     slug: Attribute.UID & Attribute.Required;
     structure: Attribute.DynamicZone<
       [
@@ -1090,18 +1083,11 @@ export interface ApiPostPost extends Schema.CollectionType {
   attributes: {
     pageIntro: Attribute.Component<'section.page-intro'>;
     classIcon: Attribute.String;
-    projects: Attribute.Relation<
-      'api::post.post',
-      'manyToMany',
-      'api::project.project'
-    >;
-    cta: Attribute.Component<'section.cta'>;
     author: Attribute.Relation<
       'api::post.post',
       'manyToOne',
       'api::member.member'
     >;
-    content: Attribute.RichText;
     slug: Attribute.UID & Attribute.Required;
     structure: Attribute.DynamicZone<
       [
@@ -1143,28 +1129,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     expertise: Attribute.RichText;
     link: Attribute.String;
     pageIntro: Attribute.Component<'section.page-intro'>;
-    content: Attribute.RichText;
-    tags: Attribute.Relation<
-      'api::project.project',
-      'manyToMany',
-      'api::tag.tag'
-    >;
     logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    our_services: Attribute.Relation<
-      'api::project.project',
-      'manyToMany',
-      'api::our-service.our-service'
-    >;
-    posts: Attribute.Relation<
-      'api::project.project',
-      'manyToMany',
-      'api::post.post'
-    >;
-    testimonials: Attribute.Relation<
-      'api::project.project',
-      'oneToMany',
-      'api::testimonial.testimonial'
-    >;
     structure: Attribute.DynamicZone<
       [
         'section.testimonials',
@@ -1272,11 +1237,6 @@ export interface ApiTagTag extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     classIcon: Attribute.String;
-    projects: Attribute.Relation<
-      'api::tag.tag',
-      'manyToMany',
-      'api::project.project'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
