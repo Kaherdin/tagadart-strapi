@@ -98,6 +98,7 @@ export interface SectionProjectsSection extends Schema.Component {
       'api::project.project'
     >;
     sectionIntro: Attribute.Component<'elements.section-intro'>;
+    pagination: Attribute.Component<'elements.pagination'>;
   };
 }
 
@@ -209,6 +210,7 @@ export interface SectionBlogSection extends Schema.Component {
       'api::post.post'
     >;
     sectionIntro: Attribute.Component<'elements.section-intro'>;
+    pagination: Attribute.Component<'elements.pagination'>;
   };
 }
 
@@ -280,6 +282,17 @@ export interface ElementsPricingCard extends Schema.Component {
     popular: Attribute.Boolean & Attribute.DefaultTo<false>;
     features: Attribute.Component<'elements.pricing-feature', true>;
     link: Attribute.String;
+  };
+}
+
+export interface ElementsPagination extends Schema.Component {
+  collectionName: 'components_elements_paginations';
+  info: {
+    displayName: 'pagination';
+  };
+  attributes: {
+    value: Attribute.Enumeration<['infinite', 'pagination', 'off']> &
+      Attribute.DefaultTo<'off'>;
   };
 }
 
@@ -382,6 +395,7 @@ declare module '@strapi/types' {
       'elements.section-intro': ElementsSectionIntro;
       'elements.pricing-feature': ElementsPricingFeature;
       'elements.pricing-card': ElementsPricingCard;
+      'elements.pagination': ElementsPagination;
       'elements.offices': ElementsOffices;
       'elements.features': ElementsFeatures;
       'elements.email-contact': ElementsEmailContact;
