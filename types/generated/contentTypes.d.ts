@@ -1076,7 +1076,7 @@ export interface ApiPostPost extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    pageIntro: Attribute.Component<'section.page-intro'>;
+    pageIntro: Attribute.Component<'section.page-intro'> & Attribute.Required;
     classIcon: Attribute.String;
     projects: Attribute.Relation<
       'api::post.post',

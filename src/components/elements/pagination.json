@@ -1,7 +1,8 @@
 {
   "collectionName": "components_elements_paginations",
   "info": {
-    "displayName": "pagination"
+    "displayName": "pagination",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,10 +10,10 @@
       "type": "enumeration",
       "enum": [
         "infinite",
-        "pagination",
-        "off"
+        "pagination"
       ],
-      "default": "off"
+      "default": "pagination",
+      "required": true
     }
   }
 }
