@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "paginations",
+  "info": {
+    "singularName": "pagination",
+    "pluralName": "paginations",
+    "displayName": "Pagination"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    }
+  }
+}
