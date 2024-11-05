@@ -17,6 +17,7 @@
   "dependencies": {
     "@strapi/plugin-cloud": "4.25.8",
     "@strapi/plugin-i18n": "4.25.8",
+    "@strapi/plugin-seo": "^1.9.9",
     "@strapi/plugin-users-permissions": "4.25.8",
     "@strapi/provider-upload-cloudinary": "^4.25.9",
     "@strapi/strapi": "4.25.8",
