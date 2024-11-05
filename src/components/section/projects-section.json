@@ -16,6 +16,11 @@
       "type": "component",
       "repeatable": false,
       "component": "elements.section-intro"
+    },
+    "pagination": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pagination.pagination"
     }
   }
 }
