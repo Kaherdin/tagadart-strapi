@@ -15,7 +15,8 @@
     "pageIntro": {
       "type": "component",
       "repeatable": false,
-      "component": "section.page-intro"
+      "component": "section.page-intro",
+      "required": true
     },
     "classIcon": {
       "type": "string"

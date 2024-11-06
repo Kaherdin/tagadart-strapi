@@ -18,7 +18,9 @@
       "component": "elements.section-intro"
     },
     "pagination": {
-      "type": "boolean"
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.pagination"
     }
   }
 }
