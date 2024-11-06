@@ -13,26 +13,13 @@
   "pluginOptions": {},
   "attributes": {
     "classIcon": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "pageIntro": {
       "type": "component",
       "repeatable": false,
       "component": "section.page-intro"
-    },
-    "cta": {
-      "type": "component",
-      "repeatable": true,
-      "component": "section.cta"
-    },
-    "projects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project.project",
-      "inversedBy": "our_services"
-    },
-    "content": {
-      "type": "richtext"
     },
     "slug": {
       "type": "uid",
@@ -42,6 +29,19 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.seo"
+    },
+    "structure": {
+      "type": "dynamiczone",
+      "components": [
+        "section.text-section",
+        "section.testimonials",
+        "section.services-section",
+        "section.projects-section",
+        "section.pricing-section",
+        "section.features-section",
+        "section.cta",
+        "section.blog-section"
+      ]
     }
   }
 }
