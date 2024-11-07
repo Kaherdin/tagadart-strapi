@@ -60,6 +60,11 @@
     "slug": {
       "type": "uid",
       "required": true
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

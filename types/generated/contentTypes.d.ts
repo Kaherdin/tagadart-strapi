@@ -1069,6 +1069,36 @@ export interface ApiPagePage extends Schema.CollectionType {
   };
 }
 
+export interface ApiPaginationPagination extends Schema.CollectionType {
+  collectionName: 'paginations';
+  info: {
+    singularName: 'pagination';
+    pluralName: 'paginations';
+    displayName: 'Pagination';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    value: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pagination.pagination',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pagination.pagination',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPostPost extends Schema.CollectionType {
   collectionName: 'posts';
   info: {
@@ -1081,7 +1111,7 @@ export interface ApiPostPost extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    pageIntro: Attribute.Component<'section.page-intro'>;
+    pageIntro: Attribute.Component<'section.page-intro'> & Attribute.Required;
     classIcon: Attribute.String;
     author: Attribute.Relation<
       'api::post.post',
@@ -1308,6 +1338,7 @@ declare module '@strapi/types' {
       'api::member.member': ApiMemberMember;
       'api::our-service.our-service': ApiOurServiceOurService;
       'api::page.page': ApiPagePage;
+      'api::pagination.pagination': ApiPaginationPagination;
       'api::post.post': ApiPostPost;
       'api::project.project': ApiProjectProject;
       'api::projects-page.projects-page': ApiProjectsPageProjectsPage;
