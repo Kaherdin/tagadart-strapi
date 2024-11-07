@@ -179,8 +179,7 @@ export interface SectionPageIntro extends Schema.Component {
     title: Attribute.String & Attribute.Required;
     eyebrow: Attribute.String;
     content: Attribute.RichText;
-    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Attribute.Required;
+    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
 }
 
