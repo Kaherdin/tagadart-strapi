@@ -934,7 +934,7 @@ export interface ApiPagePage extends Schema.CollectionType {
         'section.contact-section'
       ]
     >;
-    slug: Attribute.UID;
+    slug: Attribute.UID & Attribute.Required;
     seo: Attribute.Component<'shared.seo'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
