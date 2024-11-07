@@ -999,6 +999,7 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
     classIcon: Attribute.String & Attribute.Required;
     pageIntro: Attribute.Component<'section.page-intro'>;
     slug: Attribute.UID & Attribute.Required;
+    seo: Attribute.Component<'shared.seo'>;
     structure: Attribute.DynamicZone<
       [
         'section.text-section',
@@ -1059,42 +1060,13 @@ export interface ApiPagePage extends Schema.CollectionType {
       ]
     >;
     slug: Attribute.UID;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPaginationPagination extends Schema.CollectionType {
-  collectionName: 'paginations';
-  info: {
-    singularName: 'pagination';
-    pluralName: 'paginations';
-    displayName: 'Pagination';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    value: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::pagination.pagination',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::pagination.pagination',
-      'oneToOne',
-      'admin::user'
-    > &
       Attribute.Private;
   };
 }
@@ -1119,6 +1091,7 @@ export interface ApiPostPost extends Schema.CollectionType {
       'api::member.member'
     >;
     slug: Attribute.UID & Attribute.Required;
+    seo: Attribute.Component<'shared.seo'>;
     structure: Attribute.DynamicZone<
       [
         'section.text-section',
@@ -1173,6 +1146,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
       ]
     >;
     slug: Attribute.UID & Attribute.Required;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1338,7 +1312,6 @@ declare module '@strapi/types' {
       'api::member.member': ApiMemberMember;
       'api::our-service.our-service': ApiOurServiceOurService;
       'api::page.page': ApiPagePage;
-      'api::pagination.pagination': ApiPaginationPagination;
       'api::post.post': ApiPostPost;
       'api::project.project': ApiProjectProject;
       'api::projects-page.projects-page': ApiProjectsPageProjectsPage;
