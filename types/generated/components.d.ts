@@ -54,6 +54,221 @@ export interface SharedMetaSocial extends Schema.Component {
   };
 }
 
+export interface SectionTextSection extends Schema.Component {
+  collectionName: 'components_section_text_sections';
+  info: {
+    displayName: 'Text Section';
+    icon: 'write';
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText;
+  };
+}
+
+export interface SectionTestimonials extends Schema.Component {
+  collectionName: 'components_section_testimonials';
+  info: {
+    displayName: 'Testimonials Section';
+    icon: 'server';
+    description: '';
+  };
+  attributes: {
+    testimonials: Attribute.Relation<
+      'section.testimonials',
+      'oneToMany',
+      'api::testimonial.testimonial'
+    >;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+  };
+}
+
+export interface SectionTeamSection extends Schema.Component {
+  collectionName: 'components_section_team_sections';
+  info: {
+    displayName: 'Team Section';
+    icon: 'alien';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText;
+    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    members: Attribute.Relation<
+      'section.team-section',
+      'oneToMany',
+      'api::member.member'
+    >;
+    eyebrow: Attribute.String;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+  };
+}
+
+export interface SectionServicesSection extends Schema.Component {
+  collectionName: 'components_section_services_sections';
+  info: {
+    displayName: 'Services Section';
+    icon: 'crown';
+    description: '';
+  };
+  attributes: {
+    our_services: Attribute.Relation<
+      'section.services-section',
+      'oneToMany',
+      'api::our-service.our-service'
+    >;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+  };
+}
+
+export interface SectionReferenceSection extends Schema.Component {
+  collectionName: 'components_section_reference_sections';
+  info: {
+    displayName: 'Reference Section';
+    icon: 'chartBubble';
+    description: '';
+  };
+  attributes: {
+    clients: Attribute.Relation<
+      'section.reference-section',
+      'oneToMany',
+      'api::client.client'
+    >;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+  };
+}
+
+export interface SectionProjectsSection extends Schema.Component {
+  collectionName: 'components_section_projects_sections';
+  info: {
+    displayName: 'Projects Section';
+    icon: 'archive';
+    description: '';
+  };
+  attributes: {
+    projects: Attribute.Relation<
+      'section.projects-section',
+      'oneToMany',
+      'api::project.project'
+    >;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+    pagination: Attribute.Component<'elements.pagination'>;
+  };
+}
+
+export interface SectionPricingSection extends Schema.Component {
+  collectionName: 'components_section_pricing_sections';
+  info: {
+    displayName: 'Pricing Section';
+    description: '';
+  };
+  attributes: {
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+    cards: Attribute.Component<'elements.pricing-card', true>;
+  };
+}
+
+export interface SectionPageIntro extends Schema.Component {
+  collectionName: 'components_section_page_intros';
+  info: {
+    displayName: 'Page Intro';
+    icon: 'house';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    eyebrow: Attribute.String;
+    content: Attribute.RichText;
+    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
+  };
+}
+
+export interface SectionHeroSection extends Schema.Component {
+  collectionName: 'components_section_hero_sections';
+  info: {
+    displayName: 'Hero Section';
+    description: '';
+  };
+  attributes: {
+    buttons: Attribute.Component<'elements.button', true>;
+    logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+  };
+}
+
+export interface SectionFeaturesSection extends Schema.Component {
+  collectionName: 'components_section_features_sections';
+  info: {
+    displayName: 'Features Section';
+    icon: 'dashboard';
+    description: '';
+  };
+  attributes: {
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+    features: Attribute.Component<'elements.features', true>;
+  };
+}
+
+export interface SectionCultureSection extends Schema.Component {
+  collectionName: 'components_section_culture_sections';
+  info: {
+    displayName: 'Culture Section';
+    icon: 'cube';
+    description: '';
+  };
+  attributes: {
+    values: Attribute.Component<'elements.text-zone', true>;
+    classIcon: Attribute.String;
+    link: Attribute.String;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+  };
+}
+
+export interface SectionCta extends Schema.Component {
+  collectionName: 'components_section_cta_sections';
+  info: {
+    displayName: 'CTA Section';
+    description: '';
+  };
+  attributes: {
+    buttons: Attribute.Component<'elements.button', true>;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+    align: Attribute.Enumeration<['left', 'center', 'right']>;
+  };
+}
+
+export interface SectionContactSection extends Schema.Component {
+  collectionName: 'components_section_contact_sections';
+  info: {
+    displayName: 'Contact Section';
+    description: '';
+  };
+  attributes: {
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+    content: Attribute.Component<'elements.contact-content'>;
+    formEnabled: Attribute.Boolean & Attribute.DefaultTo<true>;
+  };
+}
+
+export interface SectionBlogSection extends Schema.Component {
+  collectionName: 'components_section_blog_sections';
+  info: {
+    displayName: 'Blog Section';
+    icon: 'message';
+    description: '';
+  };
+  attributes: {
+    posts: Attribute.Relation<
+      'section.blog-section',
+      'oneToMany',
+      'api::post.post'
+    >;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
+    pagination: Attribute.Component<'elements.pagination'>;
+  };
+}
+
 export interface ElementsTextZone extends Schema.Component {
   collectionName: 'components_elements_text_zones';
   info: {
@@ -215,237 +430,11 @@ export interface ElementsAuthor extends Schema.Component {
   };
 }
 
-export interface SectionTextSection extends Schema.Component {
-  collectionName: 'components_section_text_sections';
-  info: {
-    displayName: 'Text Section';
-    icon: 'write';
-  };
-  attributes: {
-    title: Attribute.String;
-    content: Attribute.RichText;
-  };
-}
-
-export interface SectionTestimonials extends Schema.Component {
-  collectionName: 'components_section_testimonials';
-  info: {
-    displayName: 'Testimonials Section';
-    icon: 'server';
-    description: '';
-  };
-  attributes: {
-    testimonials: Attribute.Relation<
-      'section.testimonials',
-      'oneToMany',
-      'api::testimonial.testimonial'
-    >;
-    sectionIntro: Attribute.Component<'elements.section-intro'>;
-  };
-}
-
-export interface SectionTeamSection extends Schema.Component {
-  collectionName: 'components_section_team_sections';
-  info: {
-    displayName: 'Team Section';
-    icon: 'alien';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    content: Attribute.RichText;
-    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    members: Attribute.Relation<
-      'section.team-section',
-      'oneToMany',
-      'api::member.member'
-    >;
-    eyebrow: Attribute.String;
-    sectionIntro: Attribute.Component<'elements.section-intro'>;
-  };
-}
-
-export interface SectionServicesSection extends Schema.Component {
-  collectionName: 'components_section_services_sections';
-  info: {
-    displayName: 'Services Section';
-    icon: 'crown';
-    description: '';
-  };
-  attributes: {
-    our_services: Attribute.Relation<
-      'section.services-section',
-      'oneToMany',
-      'api::our-service.our-service'
-    >;
-    sectionIntro: Attribute.Component<'elements.section-intro'>;
-  };
-}
-
-export interface SectionReferenceSection extends Schema.Component {
-  collectionName: 'components_section_reference_sections';
-  info: {
-    displayName: 'Reference Section';
-    icon: 'chartBubble';
-    description: '';
-  };
-  attributes: {
-    clients: Attribute.Relation<
-      'section.reference-section',
-      'oneToMany',
-      'api::client.client'
-    >;
-    sectionIntro: Attribute.Component<'elements.section-intro'>;
-  };
-}
-
-export interface SectionProjectsSection extends Schema.Component {
-  collectionName: 'components_section_projects_sections';
-  info: {
-    displayName: 'Projects Section';
-    icon: 'archive';
-    description: '';
-  };
-  attributes: {
-    projects: Attribute.Relation<
-      'section.projects-section',
-      'oneToMany',
-      'api::project.project'
-    >;
-    sectionIntro: Attribute.Component<'elements.section-intro'>;
-    pagination: Attribute.Component<'elements.pagination'>;
-  };
-}
-
-export interface SectionPricingSection extends Schema.Component {
-  collectionName: 'components_section_pricing_sections';
-  info: {
-    displayName: 'Pricing Section';
-    description: '';
-  };
-  attributes: {
-    sectionIntro: Attribute.Component<'elements.section-intro'>;
-    cards: Attribute.Component<'elements.pricing-card', true>;
-  };
-}
-
-export interface SectionPageIntro extends Schema.Component {
-  collectionName: 'components_section_page_intros';
-  info: {
-    displayName: 'Page Intro';
-    icon: 'house';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    eyebrow: Attribute.String;
-    content: Attribute.RichText;
-    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-  };
-}
-
-export interface SectionHeroSection extends Schema.Component {
-  collectionName: 'components_section_hero_sections';
-  info: {
-    displayName: 'Hero Section';
-    description: '';
-  };
-  attributes: {
-    buttons: Attribute.Component<'elements.button', true>;
-    logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    sectionIntro: Attribute.Component<'elements.section-intro'>;
-  };
-}
-
-export interface SectionFeaturesSection extends Schema.Component {
-  collectionName: 'components_section_features_sections';
-  info: {
-    displayName: 'Features Section';
-    icon: 'dashboard';
-    description: '';
-  };
-  attributes: {
-    sectionIntro: Attribute.Component<'elements.section-intro'>;
-    features: Attribute.Component<'elements.features', true>;
-  };
-}
-
-export interface SectionCultureSection extends Schema.Component {
-  collectionName: 'components_section_culture_sections';
-  info: {
-    displayName: 'Culture Section';
-    icon: 'cube';
-    description: '';
-  };
-  attributes: {
-    values: Attribute.Component<'elements.text-zone', true>;
-    classIcon: Attribute.String;
-    link: Attribute.String;
-    sectionIntro: Attribute.Component<'elements.section-intro'>;
-  };
-}
-
-export interface SectionCta extends Schema.Component {
-  collectionName: 'components_section_cta_sections';
-  info: {
-    displayName: 'CTA Section';
-    description: '';
-  };
-  attributes: {
-    buttons: Attribute.Component<'elements.button', true>;
-    sectionIntro: Attribute.Component<'elements.section-intro'>;
-    align: Attribute.Enumeration<['left', 'center', 'right']>;
-  };
-}
-
-export interface SectionContactSection extends Schema.Component {
-  collectionName: 'components_section_contact_sections';
-  info: {
-    displayName: 'Contact Section';
-    description: '';
-  };
-  attributes: {
-    sectionIntro: Attribute.Component<'elements.section-intro'>;
-    content: Attribute.Component<'elements.contact-content'>;
-    formEnabled: Attribute.Boolean & Attribute.DefaultTo<true>;
-  };
-}
-
-export interface SectionBlogSection extends Schema.Component {
-  collectionName: 'components_section_blog_sections';
-  info: {
-    displayName: 'Blog Section';
-    icon: 'message';
-    description: '';
-  };
-  attributes: {
-    posts: Attribute.Relation<
-      'section.blog-section',
-      'oneToMany',
-      'api::post.post'
-    >;
-    sectionIntro: Attribute.Component<'elements.section-intro'>;
-    pagination: Attribute.Component<'elements.pagination'>;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'shared.seo': SharedSeo;
       'shared.meta-social': SharedMetaSocial;
-      'elements.text-zone': ElementsTextZone;
-      'elements.social-network': ElementsSocialNetwork;
-      'elements.section-intro': ElementsSectionIntro;
-      'elements.pricing-feature': ElementsPricingFeature;
-      'elements.pricing-card': ElementsPricingCard;
-      'elements.pagination': ElementsPagination;
-      'elements.offices': ElementsOffices;
-      'elements.features': ElementsFeatures;
-      'elements.email-contact': ElementsEmailContact;
-      'elements.contact-content': ElementsContactContent;
-      'elements.button': ElementsButton;
-      'elements.author': ElementsAuthor;
       'section.text-section': SectionTextSection;
       'section.testimonials': SectionTestimonials;
       'section.team-section': SectionTeamSection;
@@ -460,6 +449,18 @@ declare module '@strapi/types' {
       'section.cta': SectionCta;
       'section.contact-section': SectionContactSection;
       'section.blog-section': SectionBlogSection;
+      'elements.text-zone': ElementsTextZone;
+      'elements.social-network': ElementsSocialNetwork;
+      'elements.section-intro': ElementsSectionIntro;
+      'elements.pricing-feature': ElementsPricingFeature;
+      'elements.pricing-card': ElementsPricingCard;
+      'elements.pagination': ElementsPagination;
+      'elements.offices': ElementsOffices;
+      'elements.features': ElementsFeatures;
+      'elements.email-contact': ElementsEmailContact;
+      'elements.contact-content': ElementsContactContent;
+      'elements.button': ElementsButton;
+      'elements.author': ElementsAuthor;
     }
   }
 }
