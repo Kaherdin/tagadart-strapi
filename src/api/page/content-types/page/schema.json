@@ -31,12 +31,14 @@
       ]
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "required": true
     },
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "required": true
     }
   }
 }
