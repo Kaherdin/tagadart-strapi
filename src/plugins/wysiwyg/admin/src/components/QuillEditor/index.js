@@ -11,6 +11,7 @@ const Editor = ({ onChange, name, value }) => {
       ["link"],
       ["clean"],
       ["video"],
+      [{ align: [] }],
     ],
   };
   return (
