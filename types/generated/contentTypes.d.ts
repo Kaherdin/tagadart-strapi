@@ -1005,6 +1005,7 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
       'api::project.project'
     >;
     content: Attribute.RichText;
+    slug: Attribute.UID & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1048,7 +1049,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'section.features-section',
         'section.culture-section',
         'section.page-intro',
-        'section.pricing-section'
+        'section.pricing-section',
+        'section.contact-section'
       ]
     >;
     slug: Attribute.UID;
@@ -1088,6 +1090,7 @@ export interface ApiPostPost extends Schema.CollectionType {
       'api::member.member'
     >;
     content: Attribute.RichText;
+    slug: Attribute.UID & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1138,6 +1141,19 @@ export interface ApiProjectProject extends Schema.CollectionType {
       'oneToMany',
       'api::testimonial.testimonial'
     >;
+    structure: Attribute.DynamicZone<
+      [
+        'section.testimonials',
+        'section.features-section',
+        'section.cta',
+        'section.blog-section',
+        'section.services-section',
+        'section.pricing-section',
+        'section.projects-section',
+        'section.text-section'
+      ]
+    >;
+    slug: Attribute.UID & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1263,6 +1279,7 @@ export interface ApiTestimonialTestimonial extends Schema.CollectionType {
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText;
     author: Attribute.Component<'elements.author'>;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

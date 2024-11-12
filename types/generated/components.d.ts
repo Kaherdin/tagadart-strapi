@@ -1,9 +1,21 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface SectionTextSection extends Schema.Component {
+  collectionName: 'components_section_text_sections';
+  info: {
+    displayName: 'Text Section';
+    icon: 'write';
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText;
+  };
+}
+
 export interface SectionTestimonials extends Schema.Component {
   collectionName: 'components_section_testimonials';
   info: {
-    displayName: 'TestimonialsSection';
+    displayName: 'Testimonials Section';
     icon: 'server';
     description: '';
   };
@@ -13,14 +25,14 @@ export interface SectionTestimonials extends Schema.Component {
       'oneToMany',
       'api::testimonial.testimonial'
     >;
-    SectionIntro: Attribute.Component<'elements.section-intro'>;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
   };
 }
 
 export interface SectionTeamSection extends Schema.Component {
   collectionName: 'components_section_team_sections';
   info: {
-    displayName: 'TeamSection';
+    displayName: 'Team Section';
     icon: 'alien';
     description: '';
   };
@@ -41,7 +53,7 @@ export interface SectionTeamSection extends Schema.Component {
 export interface SectionServicesSection extends Schema.Component {
   collectionName: 'components_section_services_sections';
   info: {
-    displayName: 'ServicesSection';
+    displayName: 'Services Section';
     icon: 'crown';
     description: '';
   };
@@ -58,7 +70,7 @@ export interface SectionServicesSection extends Schema.Component {
 export interface SectionReferenceSection extends Schema.Component {
   collectionName: 'components_section_reference_sections';
   info: {
-    displayName: 'ReferenceSection';
+    displayName: 'Reference Section';
     icon: 'chartBubble';
     description: '';
   };
@@ -75,7 +87,7 @@ export interface SectionReferenceSection extends Schema.Component {
 export interface SectionProjectsSection extends Schema.Component {
   collectionName: 'components_section_projects_sections';
   info: {
-    displayName: 'ProjectsSection';
+    displayName: 'Projects Section';
     icon: 'archive';
     description: '';
   };
@@ -145,7 +157,7 @@ export interface SectionFeaturesSection extends Schema.Component {
 export interface SectionCultureSection extends Schema.Component {
   collectionName: 'components_section_culture_sections';
   info: {
-    displayName: 'CultureSection';
+    displayName: 'Culture Section';
     icon: 'cube';
     description: '';
   };
@@ -166,6 +178,7 @@ export interface SectionCta extends Schema.Component {
   attributes: {
     buttons: Attribute.Component<'elements.button', true>;
     sectionIntro: Attribute.Component<'elements.section-intro'>;
+    align: Attribute.Enumeration<['left', 'center', 'right']>;
   };
 }
 
@@ -173,17 +186,19 @@ export interface SectionContactSection extends Schema.Component {
   collectionName: 'components_section_contact_sections';
   info: {
     displayName: 'Contact Section';
-    icon: 'discuss';
+    description: '';
   };
   attributes: {
     sectionIntro: Attribute.Component<'elements.section-intro'>;
+    content: Attribute.Component<'elements.contact-content'>;
+    formEnabled: Attribute.Boolean & Attribute.DefaultTo<true>;
   };
 }
 
 export interface SectionBlogSection extends Schema.Component {
   collectionName: 'components_section_blog_sections';
   info: {
-    displayName: 'BlogSection';
+    displayName: 'Blog Section';
     icon: 'message';
     description: '';
   };
@@ -210,6 +225,19 @@ export interface ElementsTextZone extends Schema.Component {
   };
 }
 
+export interface ElementsSocialNetwork extends Schema.Component {
+  collectionName: 'components_elements_social_networks';
+  info: {
+    displayName: 'Social Network';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    url: Attribute.String & Attribute.Required;
+    icon: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface ElementsSectionIntro extends Schema.Component {
   collectionName: 'components_elements_section_intros';
   info: {
@@ -218,7 +246,7 @@ export interface ElementsSectionIntro extends Schema.Component {
   };
   attributes: {
     eyebrow: Attribute.String;
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required;
     content: Attribute.RichText;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
   };
@@ -251,6 +279,20 @@ export interface ElementsPricingCard extends Schema.Component {
     content: Attribute.Text & Attribute.Required;
     popular: Attribute.Boolean & Attribute.DefaultTo<false>;
     features: Attribute.Component<'elements.pricing-feature', true>;
+    link: Attribute.String;
+  };
+}
+
+export interface ElementsOffices extends Schema.Component {
+  collectionName: 'components_elements_offices';
+  info: {
+    displayName: 'Office';
+    description: '';
+  };
+  attributes: {
+    city: Attribute.String & Attribute.Required;
+    country: Attribute.String & Attribute.Required;
+    address: Attribute.Text & Attribute.Required;
   };
 }
 
@@ -264,6 +306,31 @@ export interface ElementsFeatures extends Schema.Component {
     content: Attribute.RichText;
     link: Attribute.String;
     classIcon: Attribute.String;
+  };
+}
+
+export interface ElementsEmailContact extends Schema.Component {
+  collectionName: 'components_elements_email_contacts';
+  info: {
+    displayName: 'Email Contact';
+    description: '';
+  };
+  attributes: {
+    label: Attribute.String & Attribute.Required;
+    email: Attribute.Email & Attribute.Required;
+  };
+}
+
+export interface ElementsContactContent extends Schema.Component {
+  collectionName: 'components_elements_content_contacts';
+  info: {
+    displayName: 'Contact Content';
+    description: '';
+  };
+  attributes: {
+    offices: Attribute.Component<'elements.offices', true>;
+    emails: Attribute.Component<'elements.email-contact', true>;
+    socials: Attribute.Component<'elements.social-network', true>;
   };
 }
 
@@ -289,13 +356,14 @@ export interface ElementsAuthor extends Schema.Component {
     fullname: Attribute.String;
     avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText;
-    title: Attribute.String;
+    role: Attribute.String;
   };
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'section.text-section': SectionTextSection;
       'section.testimonials': SectionTestimonials;
       'section.team-section': SectionTeamSection;
       'section.services-section': SectionServicesSection;
@@ -310,10 +378,14 @@ declare module '@strapi/types' {
       'section.contact-section': SectionContactSection;
       'section.blog-section': SectionBlogSection;
       'elements.text-zone': ElementsTextZone;
+      'elements.social-network': ElementsSocialNetwork;
       'elements.section-intro': ElementsSectionIntro;
       'elements.pricing-feature': ElementsPricingFeature;
       'elements.pricing-card': ElementsPricingCard;
+      'elements.offices': ElementsOffices;
       'elements.features': ElementsFeatures;
+      'elements.email-contact': ElementsEmailContact;
+      'elements.contact-content': ElementsContactContent;
       'elements.button': ElementsButton;
       'elements.author': ElementsAuthor;
     }
