@@ -9,7 +9,22 @@ export default [
         directives: {
           "connect-src": ["'self'", "https:"],
           "img-src": ["'self'", "data:", "blob:", "res.cloudinary.com"],
-          "media-src": ["'self'", "data:", "blob:", "res.cloudinary.com"],
+          "media-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "res.cloudinary.com",
+            "*.youtube.com",
+            "*.vimeo.com",
+            "*.dailymotion.com",
+          ],
+          "frame-src": [
+            "'self'",
+            "www.youtube.com",
+            "youtube.com",
+            "player.vimeo.com",
+            "*.dailymotion.com",
+          ],
           upgradeInsecureRequests: null,
         },
       },
