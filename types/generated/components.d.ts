@@ -193,8 +193,6 @@ export interface SectionHeroSection extends Schema.Component {
     buttons: Attribute.Component<'elements.button', true>;
     logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     sectionIntro: Attribute.Component<'elements.section-intro'>;
-    designType: Attribute.Enumeration<['Standard', 'Featured']>;
-    embedVideo: Attribute.String;
   };
 }
 
