@@ -788,71 +788,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAboutUsPageAboutUsPage extends Schema.SingleType {
-  collectionName: 'about_us_pages';
-  info: {
-    singularName: 'about-us-page';
-    pluralName: 'about-us-pages';
-    displayName: 'About Us Page';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    pageIntro: Attribute.Component<'section.page-intro'>;
-    cultureSection: Attribute.Component<'section.culture-section'>;
-    teamSection: Attribute.Component<'section.team-section'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::about-us-page.about-us-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::about-us-page.about-us-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiBlogPageBlogPage extends Schema.SingleType {
-  collectionName: 'blog_pages';
-  info: {
-    singularName: 'blog-page';
-    pluralName: 'blog-pages';
-    displayName: 'BlogPage';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    pageIntro: Attribute.Component<'section.page-intro'>;
-    blogSection: Attribute.Component<'section.blog-section'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::blog-page.blog-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::blog-page.blog-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiClientClient extends Schema.CollectionType {
   collectionName: 'clients';
   info: {
@@ -881,66 +816,6 @@ export interface ApiClientClient extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiContactPageContactPage extends Schema.SingleType {
-  collectionName: 'contact_pages';
-  info: {
-    singularName: 'contact-page';
-    pluralName: 'contact-pages';
-    displayName: 'Contact Page';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    pageIntro: Attribute.Component<'section.page-intro', true>;
-    email: Attribute.String;
-    phone: Attribute.String;
-    offices: Attribute.Component<'elements.text-zone', true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::contact-page.contact-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::contact-page.contact-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiHomeHome extends Schema.SingleType {
-  collectionName: 'homes';
-  info: {
-    singularName: 'home';
-    pluralName: 'homes';
-    displayName: 'Home';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    pageIntro: Attribute.Component<'section.page-intro'>;
-    referencesSection: Attribute.Component<'section.reference-section'>;
-    projectsSection: Attribute.Component<'section.projects-section'>;
-    servicesSection: Attribute.Component<'section.services-section'>;
-    blogSection: Attribute.Component<'section.blog-section'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::home.home', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -996,16 +871,22 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    classIcon: Attribute.String;
+    classIcon: Attribute.String & Attribute.Required;
     pageIntro: Attribute.Component<'section.page-intro'>;
-    cta: Attribute.Component<'section.cta', true>;
-    projects: Attribute.Relation<
-      'api::our-service.our-service',
-      'manyToMany',
-      'api::project.project'
-    >;
-    content: Attribute.RichText;
     slug: Attribute.UID & Attribute.Required;
+    seo: Attribute.Component<'shared.seo'>;
+    structure: Attribute.DynamicZone<
+      [
+        'section.text-section',
+        'section.testimonials',
+        'section.services-section',
+        'section.projects-section',
+        'section.pricing-section',
+        'section.features-section',
+        'section.cta',
+        'section.blog-section'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1053,7 +934,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'section.contact-section'
       ]
     >;
-    slug: Attribute.UID;
+    slug: Attribute.UID & Attribute.Required;
+    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1076,21 +958,27 @@ export interface ApiPostPost extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    pageIntro: Attribute.Component<'section.page-intro'>;
+    pageIntro: Attribute.Component<'section.page-intro'> & Attribute.Required;
     classIcon: Attribute.String;
-    projects: Attribute.Relation<
-      'api::post.post',
-      'manyToMany',
-      'api::project.project'
-    >;
-    cta: Attribute.Component<'section.cta'>;
     author: Attribute.Relation<
       'api::post.post',
       'manyToOne',
       'api::member.member'
     >;
-    content: Attribute.RichText;
     slug: Attribute.UID & Attribute.Required;
+    seo: Attribute.Component<'shared.seo'>;
+    structure: Attribute.DynamicZone<
+      [
+        'section.text-section',
+        'section.testimonials',
+        'section.services-section',
+        'section.projects-section',
+        'section.pricing-section',
+        'section.features-section',
+        'section.cta',
+        'section.blog-section'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1119,28 +1007,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
     expertise: Attribute.RichText;
     link: Attribute.String;
     pageIntro: Attribute.Component<'section.page-intro'>;
-    content: Attribute.RichText;
-    tags: Attribute.Relation<
-      'api::project.project',
-      'manyToMany',
-      'api::tag.tag'
-    >;
     logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    our_services: Attribute.Relation<
-      'api::project.project',
-      'manyToMany',
-      'api::our-service.our-service'
-    >;
-    posts: Attribute.Relation<
-      'api::project.project',
-      'manyToMany',
-      'api::post.post'
-    >;
-    testimonials: Attribute.Relation<
-      'api::project.project',
-      'oneToMany',
-      'api::testimonial.testimonial'
-    >;
     structure: Attribute.DynamicZone<
       [
         'section.testimonials',
@@ -1154,6 +1021,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
       ]
     >;
     slug: Attribute.UID & Attribute.Required;
+    seo: Attribute.Component<'shared.seo'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1165,68 +1033,6 @@ export interface ApiProjectProject extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::project.project',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiProjectsPageProjectsPage extends Schema.SingleType {
-  collectionName: 'projects_pages';
-  info: {
-    singularName: 'projects-page';
-    pluralName: 'projects-pages';
-    displayName: 'Projects Page';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    pageIntro: Attribute.Component<'section.page-intro'>;
-    projectsSection: Attribute.Component<'section.projects-section'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::projects-page.projects-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::projects-page.projects-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiServicesPageServicesPage extends Schema.SingleType {
-  collectionName: 'services_pages';
-  info: {
-    singularName: 'services-page';
-    pluralName: 'services-pages';
-    displayName: 'Services Page';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    pageIntro: Attribute.Component<'section.page-intro'>;
-    servicesSection: Attribute.Component<'section.services-section'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::services-page.services-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::services-page.services-page',
       'oneToOne',
       'admin::user'
     > &
@@ -1248,11 +1054,6 @@ export interface ApiTagTag extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     classIcon: Attribute.String;
-    projects: Attribute.Relation<
-      'api::tag.tag',
-      'manyToMany',
-      'api::project.project'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1316,18 +1117,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::about-us-page.about-us-page': ApiAboutUsPageAboutUsPage;
-      'api::blog-page.blog-page': ApiBlogPageBlogPage;
       'api::client.client': ApiClientClient;
-      'api::contact-page.contact-page': ApiContactPageContactPage;
-      'api::home.home': ApiHomeHome;
       'api::member.member': ApiMemberMember;
       'api::our-service.our-service': ApiOurServiceOurService;
       'api::page.page': ApiPagePage;
       'api::post.post': ApiPostPost;
       'api::project.project': ApiProjectProject;
-      'api::projects-page.projects-page': ApiProjectsPageProjectsPage;
-      'api::services-page.services-page': ApiServicesPageServicesPage;
       'api::tag.tag': ApiTagTag;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
     }

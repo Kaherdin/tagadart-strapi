@@ -1,5 +1,220 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface SharedSeo extends Schema.Component {
+  collectionName: 'components_shared_seos';
+  info: {
+    displayName: 'seo';
+    icon: 'search';
+    description: '';
+  };
+  attributes: {
+    metaTitle: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+    metaDescription: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 50;
+        maxLength: 160;
+      }>;
+    metaImage: Attribute.Media<'images' | 'files' | 'videos'> &
+      Attribute.Required;
+    metaSocial: Attribute.Component<'shared.meta-social', true>;
+    keywords: Attribute.Text;
+    metaRobots: Attribute.String;
+    structuredData: Attribute.JSON;
+    metaViewport: Attribute.String;
+    canonicalURL: Attribute.String;
+  };
+}
+
+export interface SharedMetaSocial extends Schema.Component {
+  collectionName: 'components_shared_meta_socials';
+  info: {
+    displayName: 'metaSocial';
+    icon: 'project-diagram';
+    description: '';
+  };
+  attributes: {
+    socialNetwork: Attribute.Enumeration<['Facebook', 'Twitter']> &
+      Attribute.Required;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+    description: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 65;
+      }>;
+    image: Attribute.Media<'images' | 'files' | 'videos'>;
+  };
+}
+
+export interface ElementsTextZone extends Schema.Component {
+  collectionName: 'components_elements_text_zones';
+  info: {
+    displayName: 'Text Zone';
+    icon: 'filter';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText;
+  };
+}
+
+export interface ElementsSocialNetwork extends Schema.Component {
+  collectionName: 'components_elements_social_networks';
+  info: {
+    displayName: 'Social Network';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    url: Attribute.String & Attribute.Required;
+    icon: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface ElementsSectionIntro extends Schema.Component {
+  collectionName: 'components_elements_section_intros';
+  info: {
+    displayName: 'Section Intro';
+    description: '';
+  };
+  attributes: {
+    eyebrow: Attribute.String;
+    title: Attribute.String & Attribute.Required;
+    content: Attribute.RichText;
+    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
+export interface ElementsPricingFeature extends Schema.Component {
+  collectionName: 'components_elements_pricing_features';
+  info: {
+    displayName: 'Pricing Feature';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.String & Attribute.Required;
+    included: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+  };
+}
+
+export interface ElementsPricingCard extends Schema.Component {
+  collectionName: 'components_elements_pricing_cards';
+  info: {
+    displayName: 'Pricing Card';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    price: Attribute.String & Attribute.Required;
+    frequency: Attribute.String & Attribute.Required;
+    content: Attribute.Text & Attribute.Required;
+    popular: Attribute.Boolean & Attribute.DefaultTo<false>;
+    features: Attribute.Component<'elements.pricing-feature', true>;
+    link: Attribute.String;
+  };
+}
+
+export interface ElementsPagination extends Schema.Component {
+  collectionName: 'components_elements_paginations';
+  info: {
+    displayName: 'pagination';
+    description: '';
+  };
+  attributes: {
+    value: Attribute.Enumeration<['infinite', 'pagination']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'pagination'>;
+  };
+}
+
+export interface ElementsOffices extends Schema.Component {
+  collectionName: 'components_elements_offices';
+  info: {
+    displayName: 'Office';
+    description: '';
+  };
+  attributes: {
+    city: Attribute.String & Attribute.Required;
+    country: Attribute.String & Attribute.Required;
+    address: Attribute.Text & Attribute.Required;
+  };
+}
+
+export interface ElementsFeatures extends Schema.Component {
+  collectionName: 'components_elements_features';
+  info: {
+    displayName: 'features';
+  };
+  attributes: {
+    name: Attribute.String;
+    content: Attribute.RichText;
+    link: Attribute.String;
+    classIcon: Attribute.String;
+  };
+}
+
+export interface ElementsEmailContact extends Schema.Component {
+  collectionName: 'components_elements_email_contacts';
+  info: {
+    displayName: 'Email Contact';
+    description: '';
+  };
+  attributes: {
+    label: Attribute.String & Attribute.Required;
+    email: Attribute.Email & Attribute.Required;
+  };
+}
+
+export interface ElementsContactContent extends Schema.Component {
+  collectionName: 'components_elements_content_contacts';
+  info: {
+    displayName: 'Contact Content';
+    description: '';
+  };
+  attributes: {
+    offices: Attribute.Component<'elements.offices', true>;
+    emails: Attribute.Component<'elements.email-contact', true>;
+    socials: Attribute.Component<'elements.social-network', true>;
+  };
+}
+
+export interface ElementsButton extends Schema.Component {
+  collectionName: 'components_elements_buttons';
+  info: {
+    displayName: 'Button';
+  };
+  attributes: {
+    link: Attribute.String;
+    type: Attribute.Enumeration<['primary', 'secondary']>;
+    text: Attribute.String;
+  };
+}
+
+export interface ElementsAuthor extends Schema.Component {
+  collectionName: 'components_elements_authors';
+  info: {
+    displayName: 'Author';
+    description: '';
+  };
+  attributes: {
+    fullname: Attribute.String;
+    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    content: Attribute.RichText;
+    role: Attribute.String;
+  };
+}
+
 export interface SectionTextSection extends Schema.Component {
   collectionName: 'components_section_text_sections';
   info: {
@@ -98,6 +313,7 @@ export interface SectionProjectsSection extends Schema.Component {
       'api::project.project'
     >;
     sectionIntro: Attribute.Component<'elements.section-intro'>;
+    pagination: Attribute.Component<'elements.pagination'>;
   };
 }
 
@@ -121,7 +337,7 @@ export interface SectionPageIntro extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required;
     eyebrow: Attribute.String;
     content: Attribute.RichText;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
@@ -209,160 +425,27 @@ export interface SectionBlogSection extends Schema.Component {
       'api::post.post'
     >;
     sectionIntro: Attribute.Component<'elements.section-intro'>;
-  };
-}
-
-export interface ElementsTextZone extends Schema.Component {
-  collectionName: 'components_elements_text_zones';
-  info: {
-    displayName: 'Text Zone';
-    icon: 'filter';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    content: Attribute.RichText;
-  };
-}
-
-export interface ElementsSocialNetwork extends Schema.Component {
-  collectionName: 'components_elements_social_networks';
-  info: {
-    displayName: 'Social Network';
-    description: '';
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    url: Attribute.String & Attribute.Required;
-    icon: Attribute.String & Attribute.Required;
-  };
-}
-
-export interface ElementsSectionIntro extends Schema.Component {
-  collectionName: 'components_elements_section_intros';
-  info: {
-    displayName: 'Section Intro';
-    description: '';
-  };
-  attributes: {
-    eyebrow: Attribute.String;
-    title: Attribute.String & Attribute.Required;
-    content: Attribute.RichText;
-    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-  };
-}
-
-export interface ElementsPricingFeature extends Schema.Component {
-  collectionName: 'components_elements_pricing_features';
-  info: {
-    displayName: 'Pricing Feature';
-    description: '';
-  };
-  attributes: {
-    text: Attribute.String & Attribute.Required;
-    included: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<true>;
-  };
-}
-
-export interface ElementsPricingCard extends Schema.Component {
-  collectionName: 'components_elements_pricing_cards';
-  info: {
-    displayName: 'Pricing Card';
-    description: '';
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    price: Attribute.String & Attribute.Required;
-    frequency: Attribute.String & Attribute.Required;
-    content: Attribute.Text & Attribute.Required;
-    popular: Attribute.Boolean & Attribute.DefaultTo<false>;
-    features: Attribute.Component<'elements.pricing-feature', true>;
-    link: Attribute.String;
-  };
-}
-
-export interface ElementsOffices extends Schema.Component {
-  collectionName: 'components_elements_offices';
-  info: {
-    displayName: 'Office';
-    description: '';
-  };
-  attributes: {
-    city: Attribute.String & Attribute.Required;
-    country: Attribute.String & Attribute.Required;
-    address: Attribute.Text & Attribute.Required;
-  };
-}
-
-export interface ElementsFeatures extends Schema.Component {
-  collectionName: 'components_elements_features';
-  info: {
-    displayName: 'features';
-  };
-  attributes: {
-    name: Attribute.String;
-    content: Attribute.RichText;
-    link: Attribute.String;
-    classIcon: Attribute.String;
-  };
-}
-
-export interface ElementsEmailContact extends Schema.Component {
-  collectionName: 'components_elements_email_contacts';
-  info: {
-    displayName: 'Email Contact';
-    description: '';
-  };
-  attributes: {
-    label: Attribute.String & Attribute.Required;
-    email: Attribute.Email & Attribute.Required;
-  };
-}
-
-export interface ElementsContactContent extends Schema.Component {
-  collectionName: 'components_elements_content_contacts';
-  info: {
-    displayName: 'Contact Content';
-    description: '';
-  };
-  attributes: {
-    offices: Attribute.Component<'elements.offices', true>;
-    emails: Attribute.Component<'elements.email-contact', true>;
-    socials: Attribute.Component<'elements.social-network', true>;
-  };
-}
-
-export interface ElementsButton extends Schema.Component {
-  collectionName: 'components_elements_buttons';
-  info: {
-    displayName: 'Button';
-  };
-  attributes: {
-    link: Attribute.String;
-    type: Attribute.Enumeration<['primary', 'secondary']>;
-    text: Attribute.String;
-  };
-}
-
-export interface ElementsAuthor extends Schema.Component {
-  collectionName: 'components_elements_authors';
-  info: {
-    displayName: 'Author';
-    description: '';
-  };
-  attributes: {
-    fullname: Attribute.String;
-    avatar: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    content: Attribute.RichText;
-    role: Attribute.String;
+    pagination: Attribute.Component<'elements.pagination'>;
   };
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'shared.seo': SharedSeo;
+      'shared.meta-social': SharedMetaSocial;
+      'elements.text-zone': ElementsTextZone;
+      'elements.social-network': ElementsSocialNetwork;
+      'elements.section-intro': ElementsSectionIntro;
+      'elements.pricing-feature': ElementsPricingFeature;
+      'elements.pricing-card': ElementsPricingCard;
+      'elements.pagination': ElementsPagination;
+      'elements.offices': ElementsOffices;
+      'elements.features': ElementsFeatures;
+      'elements.email-contact': ElementsEmailContact;
+      'elements.contact-content': ElementsContactContent;
+      'elements.button': ElementsButton;
+      'elements.author': ElementsAuthor;
       'section.text-section': SectionTextSection;
       'section.testimonials': SectionTestimonials;
       'section.team-section': SectionTeamSection;
@@ -377,17 +460,6 @@ declare module '@strapi/types' {
       'section.cta': SectionCta;
       'section.contact-section': SectionContactSection;
       'section.blog-section': SectionBlogSection;
-      'elements.text-zone': ElementsTextZone;
-      'elements.social-network': ElementsSocialNetwork;
-      'elements.section-intro': ElementsSectionIntro;
-      'elements.pricing-feature': ElementsPricingFeature;
-      'elements.pricing-card': ElementsPricingCard;
-      'elements.offices': ElementsOffices;
-      'elements.features': ElementsFeatures;
-      'elements.email-contact': ElementsEmailContact;
-      'elements.contact-content': ElementsContactContent;
-      'elements.button': ElementsButton;
-      'elements.author': ElementsAuthor;
     }
   }
 }
