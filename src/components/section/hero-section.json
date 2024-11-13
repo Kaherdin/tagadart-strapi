@@ -12,19 +12,30 @@
       "component": "elements.button"
     },
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "sectionIntro": {
       "type": "component",
       "repeatable": false,
       "component": "elements.section-intro"
+    },
+    "designType": {
+      "type": "enumeration",
+      "enum": [
+        "Standard",
+        "Featured"
+      ]
+    },
+    "embedVideo": {
+      "type": "string"
     }
   }
 }
