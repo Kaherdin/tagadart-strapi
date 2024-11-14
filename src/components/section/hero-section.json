@@ -12,19 +12,26 @@
       "component": "elements.button"
     },
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "sectionIntro": {
       "type": "component",
       "repeatable": false,
       "component": "elements.section-intro"
+    },
+    "embedVideo": {
+      "type": "string"
+    },
+    "designType": {
+      "type": "integer"
     }
   }
 }
