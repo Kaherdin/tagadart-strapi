@@ -931,8 +931,7 @@ export interface ApiPagePage extends Schema.CollectionType {
         'section.culture-section',
         'section.page-intro',
         'section.pricing-section',
-        'section.contact-section',
-        'section.text-section'
+        'section.contact-section'
       ]
     >;
     slug: Attribute.UID & Attribute.Required;
