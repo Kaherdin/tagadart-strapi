@@ -10,6 +10,8 @@ const Editor = ({ onChange, name, value }) => {
       [{ list: "ordered" }, { list: "bullet" }],
       ["link"],
       ["clean"],
+      ["video"],
+      [{ align: [] }],
     ],
   };
   return (
