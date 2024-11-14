@@ -10,7 +10,7 @@
   "scripts": {
     "build": "strapi build",
     "deploy": "strapi deploy",
-    "develop": "strapi develop",
+    "develop": "strapi develop --watch-admin",
     "start": "strapi start",
     "strapi": "strapi"
   },
@@ -24,6 +24,7 @@
     "mysql": "2.18.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-quill": "^2.0.0",
     "react-router-dom": "5.3.4",
     "strapi-plugin-transformer": "^3.1.2",
     "strapi-provider-email-resend": "^1.0.4",
