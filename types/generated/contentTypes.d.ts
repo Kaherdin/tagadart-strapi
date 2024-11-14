@@ -1081,6 +1081,7 @@ export interface ApiTestimonialTestimonial extends Schema.CollectionType {
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText;
     author: Attribute.Component<'elements.author'>;
+    sectionIntro: Attribute.Component<'elements.section-intro'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
