@@ -15,12 +15,7 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "sectionIntro": {
       "type": "component",
@@ -29,10 +24,7 @@
     },
     "designType": {
       "type": "enumeration",
-      "enum": [
-        "Standard",
-        "Featured"
-      ]
+      "enum": ["Standard", "Featured"]
     },
     "embedVideo": {
       "type": "string"
