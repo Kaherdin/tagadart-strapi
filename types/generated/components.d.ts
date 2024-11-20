@@ -307,6 +307,7 @@ export interface ElementsSectionIntro extends Schema.Component {
     title: Attribute.String & Attribute.Required;
     content: Attribute.RichText;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    embedVideo: Attribute.String;
   };
 }
 
