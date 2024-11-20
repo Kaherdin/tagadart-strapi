@@ -30,6 +30,8 @@ const Wysiwyg = ({ name, onChange, value }) => {
     handleToggleMediaLibDialog();
   };
 
+  const shortName = name.split(".").pop();
+
   return (
     <div>
       <Field name={name}>
@@ -38,7 +40,7 @@ const Wysiwyg = ({ name, onChange, value }) => {
         </Button>
         <Stack size={2} padding={2}>
           <Flex>
-            <FieldLabel>{name}</FieldLabel>
+            <FieldLabel>{shortName}</FieldLabel>
           </Flex>
           <Editor name={name} onChange={onChange} value={value} />
         </Stack>
