@@ -410,11 +410,14 @@ export interface ElementsButton extends Schema.Component {
   collectionName: 'components_elements_buttons';
   info: {
     displayName: 'Button';
+    description: '';
   };
   attributes: {
-    link: Attribute.String;
-    type: Attribute.Enumeration<['primary', 'secondary']>;
-    text: Attribute.String;
+    link: Attribute.String & Attribute.Required;
+    type: Attribute.Enumeration<['primary', 'secondary']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'primary'>;
+    text: Attribute.String & Attribute.Required;
   };
 }
 

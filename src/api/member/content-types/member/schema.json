@@ -37,6 +37,12 @@
     },
     "role": {
       "type": "string"
+    },
+    "testimonials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::testimonial.testimonial",
+      "mappedBy": "member"
     }
   }
 }
