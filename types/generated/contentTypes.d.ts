@@ -841,11 +841,6 @@ export interface ApiMemberMember extends Schema.CollectionType {
       'api::post.post'
     >;
     role: Attribute.String;
-    testimonials: Attribute.Relation<
-      'api::member.member',
-      'oneToMany',
-      'api::testimonial.testimonial'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -889,13 +884,7 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
         'section.pricing-section',
         'section.features-section',
         'section.cta',
-        'section.blog-section',
-        'section.team-section',
-        'section.reference-section',
-        'section.page-intro',
-        'section.hero-section',
-        'section.culture-section',
-        'section.contact-section'
+        'section.blog-section'
       ]
     >;
     createdAt: Attribute.DateTime;
@@ -1092,11 +1081,6 @@ export interface ApiTestimonialTestimonial extends Schema.CollectionType {
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     content: Attribute.RichText;
     author: Attribute.Component<'elements.author'>;
-    member: Attribute.Relation<
-      'api::testimonial.testimonial',
-      'manyToOne',
-      'api::member.member'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
