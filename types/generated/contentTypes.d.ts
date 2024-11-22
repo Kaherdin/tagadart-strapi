@@ -889,7 +889,13 @@ export interface ApiOurServiceOurService extends Schema.CollectionType {
         'section.pricing-section',
         'section.features-section',
         'section.cta',
-        'section.blog-section'
+        'section.blog-section',
+        'section.team-section',
+        'section.reference-section',
+        'section.page-intro',
+        'section.hero-section',
+        'section.culture-section',
+        'section.contact-section'
       ]
     >;
     createdAt: Attribute.DateTime;
