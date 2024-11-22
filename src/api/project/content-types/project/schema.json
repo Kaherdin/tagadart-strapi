@@ -33,37 +33,38 @@
       "repeatable": false,
       "component": "section.page-intro"
     },
-    "content": {
-      "type": "richtext"
-    },
-    "tags": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "inversedBy": "projects"
-    },
     "logo": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
-    "our_services": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::our-service.our-service",
-      "mappedBy": "projects"
+    "structure": {
+      "type": "dynamiczone",
+      "components": [
+        "section.testimonials",
+        "section.features-section",
+        "section.cta",
+        "section.blog-section",
+        "section.services-section",
+        "section.pricing-section",
+        "section.projects-section",
+        "section.text-section"
+      ]
     },
-    "posts": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::post.post",
-      "mappedBy": "projects"
+    "slug": {
+      "type": "uid",
+      "required": true
     },
-    "testimonials": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::testimonial.testimonial"
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "collectionName": "components_section_projects_sections",
   "info": {
-    "displayName": "ProjectsSection",
+    "displayName": "Projects Section",
     "icon": "archive",
     "description": ""
   },
@@ -16,6 +16,11 @@
       "type": "component",
       "repeatable": false,
       "component": "elements.section-intro"
+    },
+    "pagination": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.pagination"
     }
   }
 }

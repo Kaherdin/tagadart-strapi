@@ -26,11 +26,20 @@
         "section.features-section",
         "section.culture-section",
         "section.page-intro",
-        "section.pricing-section"
+        "section.pricing-section",
+        "section.contact-section",
+        "section.text-section"
       ]
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "required": true
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo",
+      "required": true
     }
   }
 }

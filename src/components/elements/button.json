@@ -1,22 +1,27 @@
 {
   "collectionName": "components_elements_buttons",
   "info": {
-    "displayName": "Button"
+    "displayName": "Button",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "link": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "type": {
       "type": "enumeration",
       "enum": [
         "primary",
         "secondary"
-      ]
+      ],
+      "default": "primary",
+      "required": true
     },
     "text": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

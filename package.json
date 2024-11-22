@@ -10,19 +10,22 @@
   "scripts": {
     "build": "strapi build",
     "deploy": "strapi deploy",
-    "develop": "strapi develop",
+    "develop": "strapi develop --watch-admin",
+    "heroku-postbuild": "cd src/plugins/wysiwyg && npm install && npm run build && cd ../../.. && npm run build",
     "start": "strapi start",
     "strapi": "strapi"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "4.25.8",
     "@strapi/plugin-i18n": "4.25.8",
+    "@strapi/plugin-seo": "^1.9.9",
     "@strapi/plugin-users-permissions": "4.25.8",
     "@strapi/provider-upload-cloudinary": "^4.25.9",
     "@strapi/strapi": "4.25.8",
     "mysql": "2.18.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-quill": "^2.0.0",
     "react-router-dom": "5.3.4",
     "strapi-plugin-transformer": "^3.1.2",
     "strapi-provider-email-resend": "^1.0.4",

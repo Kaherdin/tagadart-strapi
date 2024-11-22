@@ -9,10 +9,10 @@ export default ({ env }) => ({
       },
     },
   },
-  // wysiwyg: {
-  //   enabled: false,
-  //   resolve: "./src/plugins/wysiwyg",
-  // },
+  wysiwyg: {
+    enabled: true,
+    resolve: "./src/plugins/wysiwyg",
+  },
   email: {
     config: {
       provider: "strapi-provider-email-resend",
@@ -34,5 +34,9 @@ export default ({ env }) => ({
         removeDataKey: true,
       },
     },
+  },
+
+  seo: {
+    enabled: true,
   },
 });

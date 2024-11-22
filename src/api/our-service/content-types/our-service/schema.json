@@ -13,26 +13,41 @@
   "pluginOptions": {},
   "attributes": {
     "classIcon": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "pageIntro": {
       "type": "component",
       "repeatable": false,
       "component": "section.page-intro"
     },
-    "cta": {
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "seo": {
       "type": "component",
-      "repeatable": true,
-      "component": "section.cta"
+      "repeatable": false,
+      "component": "shared.seo"
     },
-    "projects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project.project",
-      "inversedBy": "our_services"
-    },
-    "content": {
-      "type": "richtext"
+    "structure": {
+      "type": "dynamiczone",
+      "components": [
+        "section.text-section",
+        "section.testimonials",
+        "section.services-section",
+        "section.projects-section",
+        "section.pricing-section",
+        "section.features-section",
+        "section.cta",
+        "section.blog-section",
+        "section.team-section",
+        "section.reference-section",
+        "section.page-intro",
+        "section.hero-section",
+        "section.culture-section",
+        "section.contact-section"
+      ]
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "collectionName": "components_section_blog_sections",
   "info": {
-    "displayName": "BlogSection",
+    "displayName": "Blog Section",
     "icon": "message",
     "description": ""
   },
@@ -16,6 +16,11 @@
       "type": "component",
       "repeatable": false,
       "component": "elements.section-intro"
+    },
+    "pagination": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.pagination"
     }
   }
 }

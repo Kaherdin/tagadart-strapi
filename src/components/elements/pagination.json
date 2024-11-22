@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_elements_paginations",
+  "info": {
+    "displayName": "pagination",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "enumeration",
+      "enum": [
+        "infinite",
+        "pagination"
+      ],
+      "default": "pagination",
+      "required": true
+    }
+  }
+}

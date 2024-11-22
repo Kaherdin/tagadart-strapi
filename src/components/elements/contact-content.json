@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_elements_content_contacts",
+  "info": {
+    "displayName": "Contact Content",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "offices": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.offices"
+    },
+    "emails": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.email-contact"
+    },
+
+    "socials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.social-network"
+    }
+  }
+}

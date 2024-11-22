@@ -15,21 +15,11 @@
     "pageIntro": {
       "type": "component",
       "repeatable": false,
-      "component": "section.page-intro"
+      "component": "section.page-intro",
+      "required": true
     },
     "classIcon": {
       "type": "string"
-    },
-    "projects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::project.project",
-      "inversedBy": "posts"
-    },
-    "cta": {
-      "type": "component",
-      "repeatable": false,
-      "component": "section.cta"
     },
     "author": {
       "type": "relation",
@@ -37,8 +27,27 @@
       "target": "api::member.member",
       "inversedBy": "posts"
     },
-    "content": {
-      "type": "richtext"
+    "slug": {
+      "type": "uid",
+      "required": true
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "structure": {
+      "type": "dynamiczone",
+      "components": [
+        "section.text-section",
+        "section.testimonials",
+        "section.services-section",
+        "section.projects-section",
+        "section.pricing-section",
+        "section.features-section",
+        "section.cta",
+        "section.blog-section"
+      ]
     }
   }
 }
