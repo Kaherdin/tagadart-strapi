@@ -1,5 +1,59 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface SharedSeo extends Schema.Component {
+  collectionName: 'components_shared_seos';
+  info: {
+    displayName: 'seo';
+    icon: 'search';
+    description: '';
+  };
+  attributes: {
+    metaTitle: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+    metaDescription: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 50;
+        maxLength: 160;
+      }>;
+    metaImage: Attribute.Media<'images' | 'files' | 'videos'> &
+      Attribute.Required;
+    metaSocial: Attribute.Component<'shared.meta-social', true>;
+    keywords: Attribute.Text;
+    metaRobots: Attribute.String;
+    structuredData: Attribute.JSON;
+    metaViewport: Attribute.String;
+    canonicalURL: Attribute.String;
+  };
+}
+
+export interface SharedMetaSocial extends Schema.Component {
+  collectionName: 'components_shared_meta_socials';
+  info: {
+    displayName: 'metaSocial';
+    icon: 'project-diagram';
+    description: '';
+  };
+  attributes: {
+    socialNetwork: Attribute.Enumeration<['Facebook', 'Twitter']> &
+      Attribute.Required;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+    description: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 65;
+      }>;
+    image: Attribute.Media<'images' | 'files' | 'videos'>;
+  };
+}
+
 export interface SectionTextSection extends Schema.Component {
   collectionName: 'components_section_text_sections';
   info: {
@@ -139,6 +193,8 @@ export interface SectionHeroSection extends Schema.Component {
     buttons: Attribute.Component<'elements.button', true>;
     logo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     sectionIntro: Attribute.Component<'elements.section-intro'>;
+    designType: Attribute.Enumeration<['Standard', 'Featured']>;
+    embedVideo: Attribute.String;
   };
 }
 
@@ -214,60 +270,6 @@ export interface SectionBlogSection extends Schema.Component {
   };
 }
 
-export interface SharedSeo extends Schema.Component {
-  collectionName: 'components_shared_seos';
-  info: {
-    displayName: 'seo';
-    icon: 'search';
-    description: '';
-  };
-  attributes: {
-    metaTitle: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 60;
-      }>;
-    metaDescription: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 50;
-        maxLength: 160;
-      }>;
-    metaImage: Attribute.Media<'images' | 'files' | 'videos'> &
-      Attribute.Required;
-    metaSocial: Attribute.Component<'shared.meta-social', true>;
-    keywords: Attribute.Text;
-    metaRobots: Attribute.String;
-    structuredData: Attribute.JSON;
-    metaViewport: Attribute.String;
-    canonicalURL: Attribute.String;
-  };
-}
-
-export interface SharedMetaSocial extends Schema.Component {
-  collectionName: 'components_shared_meta_socials';
-  info: {
-    displayName: 'metaSocial';
-    icon: 'project-diagram';
-    description: '';
-  };
-  attributes: {
-    socialNetwork: Attribute.Enumeration<['Facebook', 'Twitter']> &
-      Attribute.Required;
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 60;
-      }>;
-    description: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 65;
-      }>;
-    image: Attribute.Media<'images' | 'files' | 'videos'>;
-  };
-}
-
 export interface ElementsTextZone extends Schema.Component {
   collectionName: 'components_elements_text_zones';
   info: {
@@ -305,6 +307,7 @@ export interface ElementsSectionIntro extends Schema.Component {
     title: Attribute.String & Attribute.Required;
     content: Attribute.RichText;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    embedVideo: Attribute.String;
   };
 }
 
@@ -407,11 +410,14 @@ export interface ElementsButton extends Schema.Component {
   collectionName: 'components_elements_buttons';
   info: {
     displayName: 'Button';
+    description: '';
   };
   attributes: {
-    link: Attribute.String;
-    type: Attribute.Enumeration<['primary', 'secondary']>;
-    text: Attribute.String;
+    link: Attribute.String & Attribute.Required;
+    type: Attribute.Enumeration<['primary', 'secondary']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'primary'>;
+    text: Attribute.String & Attribute.Required;
   };
 }
 
@@ -432,6 +438,8 @@ export interface ElementsAuthor extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'shared.seo': SharedSeo;
+      'shared.meta-social': SharedMetaSocial;
       'section.text-section': SectionTextSection;
       'section.testimonials': SectionTestimonials;
       'section.team-section': SectionTeamSection;
@@ -446,8 +454,6 @@ declare module '@strapi/types' {
       'section.cta': SectionCta;
       'section.contact-section': SectionContactSection;
       'section.blog-section': SectionBlogSection;
-      'shared.seo': SharedSeo;
-      'shared.meta-social': SharedMetaSocial;
       'elements.text-zone': ElementsTextZone;
       'elements.social-network': ElementsSocialNetwork;
       'elements.section-intro': ElementsSectionIntro;
