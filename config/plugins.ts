@@ -39,4 +39,45 @@ export default ({ env }) => ({
   seo: {
     enabled: true,
   },
+  redis: {
+    enabled: true,
+    config: {
+      connections: {
+        default: {
+          connection: {
+            host: '127.0.0.1',
+            port: 6379,
+            db: 0,
+          },
+          settings: {
+            debug: false,
+          },
+        },
+      },
+    },
+  },
+  // Step 2: Configure the redis cache plugin
+  "rest-cache": {
+    enabled: true,
+    config: {
+      provider: {
+        name: "redis",
+        options: {
+          max: 32767,
+          connection: "default",
+        },
+      },
+      strategy: {
+        enableEtagSupport: true,
+        logs: true,
+        clearRelatedCache: true,
+        maxAge: 3600000, // Cache duration in milliseconds
+        contentTypes: [
+          "api::page.page",
+          "api::our-service.our-service",
+          "api::project.project"
+        ],
+      },
+    },
+  },
 });
