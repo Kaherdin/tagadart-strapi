@@ -10,8 +10,11 @@
   "scripts": {
     "build": "strapi build",
     "deploy": "strapi deploy",
+
     "develop": "strapi develop --watch-admin",
     "heroku-postbuild": "cd src/plugins/wysiwyg && npm install && npm run build && cd ../../.. && npm run build",
+
+
     "start": "strapi start",
     "strapi": "strapi"
   },
